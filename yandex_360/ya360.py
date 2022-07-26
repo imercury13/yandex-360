@@ -6,16 +6,36 @@ import json
 def create_group(token, orgID, body):
     """Функция создания группы
 
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param body: тело запроса
+    :type body: dict
+    :return: результат запроса
+    :rtype: dict
+
     """
 
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
     
-    return  safe_request('post', url, headers, json.dumps(body))
+    return safe_request('post', url, headers, json.dumps(body))
 
 def update_group(token, orgID, body, ID):
 	"""Функция обновления информации о группе
 	
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param body: тело запроса
+    :type body: dict
+    :param ID: ID группы
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
+
 	"""
 
 	url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'+ID+'/'
@@ -25,7 +45,18 @@ def update_group(token, orgID, body, ID):
 
 def delete_group(token, orgID, ID):
     """Функция удаления группы
-    (необратимая операция)
+
+    .. danger::
+        **Данная операция необратима, восстановить данные будет невозможно!**
+    
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param ID: ID группы
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
 
     """
 
@@ -36,6 +67,17 @@ def delete_group(token, orgID, ID):
 
 def add_member_group(token, orgID, body, ID):
     """Функция добавления участника в группу
+
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param body: тело запроса
+    :type body: dict
+    :param ID: ID группы
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
 
     """
 
@@ -57,6 +99,15 @@ def delete_member_group(token, orgID, ID, userType, userID):
 def show_group(token, orgID, ID):
     """Функция отображения информации о группе
 	
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param ID: ID группы
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
+
     """
 
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'+ID+'/'
@@ -67,6 +118,15 @@ def show_group(token, orgID, ID):
 def show_members_group(token, orgID, ID):
     """Функция отображения членов группы
 	
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param ID: ID группы
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
+
     """
 
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'+ID+'/members/'
@@ -87,6 +147,15 @@ def show_groups(token, orgID, url=None):
 def create_department(token, orgID, body):
     """Функция создания подразделения
 
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param body: тело запроса
+    :type body: dict
+    :return: результат запроса
+    :rtype: dict
+
     """
 
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/departments/'
@@ -97,6 +166,17 @@ def create_department(token, orgID, body):
 def update_department(token, orgID, body, ID):
     """Функция обновления информации о подразделении
 
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param body: тело запроса
+    :type body: dict
+    :param ID: ID подразделения
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
+
     """
 
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/departments/'+ID+'/'
@@ -105,7 +185,19 @@ def update_department(token, orgID, body, ID):
     return safe_request('patch', url, headers, json.dumps(body))
 
 def delete_department(token, orgID, ID):
-    """Функция удаления подразделения (необратимая операция)
+    """Функция удаления подразделения
+
+    .. danger::
+        **Данная операция необратима, восстановить данные будет невозможно!**
+
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param ID: ID подразделения
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
 
     """
 
@@ -116,6 +208,17 @@ def delete_department(token, orgID, ID):
 
 def add_alias_department(token, orgID, body, ID):
     """Функция добавления альяса подразделению
+
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param body: тело запроса
+    :type body: dict
+    :param ID: ID подразделения
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
 
     """
 
@@ -136,6 +239,15 @@ def delete_alias_department(token, orgID, ID, alias):
 
 def show_department(token, orgID, ID):
     """Функция вывода информации о подразделении
+
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param ID: ID подраделения
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
 
     """
 
@@ -167,6 +279,15 @@ def show_users(token, orgID, url=None):
 def show_user(token, orgID, ID):
     """Функция вывода информации о пользователе
 
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param ID: ID пользователя
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
+
     """
 
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'+ID+'/'
@@ -176,6 +297,17 @@ def show_user(token, orgID, ID):
 
 def update_user(token, orgID, body, ID):
     """Функция обновления информации о пользователе
+
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param body: тело запроса
+    :type body: dict
+    :param ID: ID пользователя
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
 
     """
 
@@ -187,6 +319,14 @@ def update_user(token, orgID, body, ID):
 def create_user(token, orgID, body):
     """Функция создания пользователя
 
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param body: тело запроса
+    :type body: dict
+    :return: результат запроса
+    :rtype: dict
     """
 
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'
@@ -195,7 +335,21 @@ def create_user(token, orgID, body):
     return safe_request('post', url, headers, json.dumps(body))
 
 def delete_user(token, orgID, ID):
-    """Функция удаления пользователе (необратимая операция: будет удалено всё: почта, содержимое диска)
+    """Функция удаления пользователя
+
+    .. danger::
+        **Данная операция необратима, восстановить данные будет невозможно!**
+
+        Будут удалены все почтовые сообщения, а также папки и файлы на Яндекс Диске
+
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param ID: ID пользователя
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
 
     """
 

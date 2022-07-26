@@ -1,7 +1,7 @@
 Пакет yandex\_360
 =================
 
-Описание модуля
+Описание пакета
 ---------------
 
 .. automodule:: yandex_360
@@ -16,5 +16,3 @@
    :members:
    :undoc-members:
    :show-inheritance:
-
-

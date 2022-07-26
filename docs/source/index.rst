@@ -26,7 +26,7 @@
    :caption: Содержание
 
    usage
-   modules
+   yandex_360
    lic
 
 Предметный указатель
