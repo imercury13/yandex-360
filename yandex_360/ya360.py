@@ -84,3 +84,32 @@ def show_groups(token, orgID, url=None):
 	
     return safe_request('get', url, headers)
 
+def create_department(token, orgID, body):
+    """Функция создания подразделения
+
+    """
+
+    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/departments/'
+    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
+
+    return safe_request('post', url, headers, body)
+
+def update_department(token, orgID, body, ID):
+    """Функция обновления информации о подразделении
+
+    """
+
+    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/departments/'+ID+'/'
+    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
+
+    return safe_request('patch', url, headers, body)
+
+def delete_department(token, orgID, ID):
+    """Функция удаления подразделения (необратимая операция)
+
+    """
+
+    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/departments/'+ID+'/'
+    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
+    
+    return safe_request('delete', url, headers)
