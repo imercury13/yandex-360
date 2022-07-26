@@ -16,7 +16,7 @@ setup(
     #url='https://ya360.uh.net.ru',
     license='MIT',
     project_urls={
-        "Documentation": "https://yandex-360.readthedocs.io/",
+        #"Documentation": "https://yandex-360.readthedocs.io/",
         "Bug Tracker": "https://github.com/imercury13/yandex_360/issues"
     },
     classifiers=[
