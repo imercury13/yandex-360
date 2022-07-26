@@ -1,7 +1,5 @@
-**Yandex OAuth Lib**
+**Yandex 360 Lib**
 
 ```
-pip install yandex-oauth
+pip install yandex-360
 ```
-
-`Документация по библиотеке <https://yandex-oauth.readthedocs.io/>`_

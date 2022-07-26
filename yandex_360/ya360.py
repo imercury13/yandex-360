@@ -1,6 +1,7 @@
 """Модуль функций библиотеки"""
 
 from jreq.jreq import safe_request
+import json
 
 def create_group(token, orgID, body):
     """Функция создания группы
@@ -10,7 +11,7 @@ def create_group(token, orgID, body):
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
     
-    return  safe_request('post', url, headers, body)
+    return  safe_request('post', url, headers, json.dumps(body))
 
 def update_group(token, orgID, body, ID):
 	"""Функция обновления информации о группе
@@ -20,7 +21,7 @@ def update_group(token, orgID, body, ID):
 	url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'+ID+'/'
 	headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
 
-	return safe_request('patch', url, headers, body)
+	return safe_request('patch', url, headers, json.dumps(body))
 
 def delete_group(token, orgID, ID):
     """Функция удаления группы
@@ -41,7 +42,7 @@ def add_member_group(token, orgID, body, ID):
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'+ID+'/members'
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
 
-    return safe_request('post', url, headers, body)
+    return safe_request('post', url, headers, json.dumps(body))
 
 def delete_member_group(token, orgID, ID, userType, userID):
     """Функция удаления участника из группы
@@ -91,7 +92,7 @@ def create_department(token, orgID, body):
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/departments/'
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
 
-    return safe_request('post', url, headers, body)
+    return safe_request('post', url, headers, json.dumps(body))
 
 def update_department(token, orgID, body, ID):
     """Функция обновления информации о подразделении
@@ -101,7 +102,7 @@ def update_department(token, orgID, body, ID):
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/departments/'+ID+'/'
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
 
-    return safe_request('patch', url, headers, body)
+    return safe_request('patch', url, headers, json.dumps(body))
 
 def delete_department(token, orgID, ID):
     """Функция удаления подразделения (необратимая операция)
@@ -121,7 +122,7 @@ def add_alias_department(token, orgID, body, ID):
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/departments/'+ID+'/aliases/'
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
 
-    return safe_request('post', url, headers, body)
+    return safe_request('post', url, headers, json.dumps(body))
 
 def delete_alias_department(token, orgID, ID, alias):
     """Функция удаления альяса у подразделения
@@ -181,7 +182,7 @@ def update_user(token, orgID, body, ID):
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'+ID+'/'
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
 	
-    return safe_request('patch', url, headers, body)
+    return safe_request('patch', url, headers, json.dumps(body))
 
 def create_user(token, orgID, body):
     """Функция создания пользователя
@@ -191,7 +192,7 @@ def create_user(token, orgID, body):
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
 	
-    return safe_request('post', url, headers, body)
+    return safe_request('post', url, headers, json.dumps(body))
 
 def delete_user(token, orgID, ID):
     """Функция удаления пользователе (необратимая операция: будет удалено всё: почта, содержимое диска)
