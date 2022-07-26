@@ -137,6 +137,15 @@ def show_members_group(token, orgID, ID):
 def show_groups(token, orgID, url=None):
     """Функция вывода списка всех групп
 
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param url: :term:`Ключи разбивки на страницы`
+    :type url: str or None
+    :return: результат запроса
+    :rtype: dict
+
     """
 
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/?'+url
@@ -259,6 +268,15 @@ def show_department(token, orgID, ID):
 def show_departments(token, orgID, url=None):
     """Функция вывода списка всех подразделений
 
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param url: :term:`Ключи разбивки на страницы`
+    :type url: str or None
+    :return: результат запроса
+    :rtype: dict
+
     """
 
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/departments/?'+url
@@ -268,6 +286,15 @@ def show_departments(token, orgID, url=None):
 
 def show_users(token, orgID, url=None):
     """Функция вывода списка всех пользователей
+
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param url: :term:`Ключи разбивки на страницы`
+    :type url: str or None
+    :return: результат запроса
+    :rtype: dict
 
     """
 
@@ -361,6 +388,17 @@ def delete_user(token, orgID, ID):
 def add_alias_user(token, orgID, ID, alias):
     """Функция добавления альяса пользователю
 
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param ID: ID пользователя
+    :type ID: str
+    :param alias: альяс
+    :type alias: str
+    :return: результат запроса
+    :rtype: dict
+
     """
 
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'+ID+'/aliases/'+alias+'/'
@@ -370,6 +408,17 @@ def add_alias_user(token, orgID, ID, alias):
 
 def delete_alias_user(token, orgID, ID, alias):
     """Функция удаления альяса у пользователя
+
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param ID: ID пользователя
+    :type ID: str
+    :param alias: альяс
+    :type alias: str
+    :return: результат запроса
+    :rtype: dict
 
     """
 
