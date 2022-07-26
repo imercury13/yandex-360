@@ -3,6 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. meta::
+   :yandex-verification: 71fab5bb44d088d6
+
 Документация yandex_360
 =======================
 
@@ -15,11 +18,11 @@
    `yandex_oauth <https://yandex-oauth.readthedocs.io/>`_
 
    .. code-block:: console
-      
+
       $ pip install yandex-oauth
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Содержание
 
    usage
