@@ -3,18 +3,27 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Yandex 360 Lib's documentation!
-==========================================
+Документация yandex_360
+=======================
+
+   | *Спасибо, что обратились к нашей библиотеке!*
+
+**yandex_360** - библиотека функций для работы с Яндекс 360 API
+
+.. tip::
+   Для более простой работы с токенами Яндекс OAuth, вы можете воспользоваться библиотекой
+   `yandex_oauth <https://yandex-oauth.readthedocs.io/>`_
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Содержание
 
+   usage
+   modules
+   lic
 
-
-Indices and tables
-==================
+Предметный указатель
+====================
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`

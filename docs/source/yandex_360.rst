@@ -1,10 +1,15 @@
-yandex\_360 package
-===================
+Пакет yandex\_360
+=================
 
-Submodules
-----------
+Описание модуля
+---------------
 
-yandex\_360.ya360 module
+.. automodule:: yandex_360
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Модуль yandex\_360.ya360
 ------------------------
 
 .. automodule:: yandex_360.ya360
@@ -12,10 +17,4 @@ yandex\_360.ya360 module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
 
-.. automodule:: yandex_360
-   :members:
-   :undoc-members:
-   :show-inheritance:
