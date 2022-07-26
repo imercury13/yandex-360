@@ -1,0 +1,4 @@
+# This is a comment in my custom robots.txt
+User-agent: *
+Allow: /
+Sitemap: https://yandex-360.readthedocs.io/sitemap.xml
