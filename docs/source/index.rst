@@ -14,6 +14,10 @@
    Для более простой работы с токенами Яндекс OAuth, вы можете воспользоваться библиотекой
    `yandex_oauth <https://yandex-oauth.readthedocs.io/>`_
 
+   .. code-block:: console
+      
+      $ pip install yandex-oauth
+
 .. toctree::
    :maxdepth: 2
    :caption: Содержание
