@@ -16,7 +16,7 @@ project = 'Yandex 360 Lib'
 copyright = '2022, Igor Kuptsov'
 author = 'Igor Kuptsov'
 
-#html_extra_path = ['robots.txt']
+html_extra_path = ['_static/robots.txt']
 html_baseurl = 'https://yandex-360.readthedocs.io/'
 
 # -- General configuration ---------------------------------------------------
