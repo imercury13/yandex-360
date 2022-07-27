@@ -89,6 +89,19 @@ def add_member_group(token, orgID, body, ID):
 def delete_member_group(token, orgID, ID, userType, userID):
     """Функция удаления участника из группы
 
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param ID: ID группы
+    :type ID: str
+    :param userType: тип участника
+    :type userTupe: str
+    :param userID: ID участника
+    :type userID: str
+    :return: результат запроса
+    :rtype: dict
+
     """
 
     url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'+ID+'/members/'+userType+'/'+userID
@@ -238,6 +251,17 @@ def add_alias_department(token, orgID, body, ID):
 
 def delete_alias_department(token, orgID, ID, alias):
     """Функция удаления альяса у подразделения
+
+    :param token: Яндекс токен приложения
+    :type token: str
+    :param orgID: ID организации в Яндекс 360
+    :type orgID: str
+    :param ID: ID подразделения
+    :type ID: str
+    :param alias: альяс
+    :type alias: str
+    :return: результат запроса
+    :rtype: dict
 
     """
 
