@@ -409,7 +409,7 @@ def delete_user(token, orgID, ID):
 
     return safe_request('delete', url, headers)
 
-def add_alias_user(token, orgID, ID, alias):
+def add_alias_user(token, orgID, ID, body):
     """Функция добавления альяса пользователю
 
     :param token: :term:`Яндекс токен приложения`
@@ -418,17 +418,17 @@ def add_alias_user(token, orgID, ID, alias):
     :type orgID: str
     :param ID: ID пользователя
     :type ID: str
-    :param alias: альяс
-    :type alias: str
+    :param body: тело запроса
+    :type body: dict
     :return: результат запроса
     :rtype: dict
 
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'+ID+'/aliases/'+alias+'/'
+    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'+ID+'/aliases/'
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
 
-    return safe_request('post', url, headers)
+    return safe_request('post', url, headers, json.dumps(body))
 
 def delete_alias_user(token, orgID, ID, alias):
     """Функция удаления альяса у пользователя
