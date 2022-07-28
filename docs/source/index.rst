@@ -13,14 +13,6 @@
 
 **yandex_360** - библиотека функций для работы с Яндекс 360 API
 
-.. tip::
-   Для более простой работы с токенами Яндекс OAuth, вы можете воспользоваться библиотекой
-   `yandex_oauth <https://yandex-oauth.readthedocs.io/>`_
-
-   .. code-block:: console
-
-      $ pip install yandex-oauth
-
 .. toctree::
    :maxdepth: 3
    :caption: Содержание
