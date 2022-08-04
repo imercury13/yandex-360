@@ -50,7 +50,7 @@ def get_id_department_by_label(sstr, token, orgID):
 
     """
 
-    url = 'perPage=10000'
+    url = 'perPage=1000'
     departments = ya360.show_departments(token, orgID, url)
     if check_request(departments):
         for department in departments['deparments']:
