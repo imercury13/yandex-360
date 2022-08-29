@@ -3,7 +3,7 @@
 Библиотека функций для работы с Yandex 360 API
 
 ```bash
-pip install yandex-360
+pip install yandex_360
 ```
 
 ## Документация
