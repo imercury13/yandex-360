@@ -24,3 +24,11 @@
    :members:
    :undoc-members:
    :show-inheritance:
+
+Модуль yandex\_360.antispam
+---------------------------
+
+.. automodule:: yandex_360.antispam
+   :members:
+   :undoc-members:
+   :show-inheritance:
