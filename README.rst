@@ -1,5 +1,15 @@
-**Yandex 360 Lib**
+Yandex 360 Lib
+==============
 
-```
-pip install yandex-360
-```
+Библиотека функций для работы с Yandex 360 API
+
+.. code-block:: console
+
+  pip install yandex_360
+
+Документация
+------------
+
+1. `ya360 <https://ya360.readthedocs.io/>`_
+2. `yandex_360 <https://yandex-360.readthedocs.io/>`_
+3. `yandex_oauth <https://yandex-oauth.readthedocs.io/>`_
