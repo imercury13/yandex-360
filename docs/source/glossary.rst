@@ -16,7 +16,7 @@
 
          .. code-block:: console
 
-            $ pip install yandex-oauth
+            $ pip install yandex_oauth
 
 
    Ключи разбивки на страницы

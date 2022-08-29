@@ -19,11 +19,18 @@
 
    usage
    yandex_360
-   glossary
-   lic
 
-Предметный указатель
-====================
+.. toctree::
+   :maxdepth: 3
+   :caption: Предметный указатель
+
+   glossary
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Лицензирование
+
+   lic
 
 * :ref:`genindex`
 * :ref:`modindex`

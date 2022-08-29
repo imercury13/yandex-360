@@ -5,13 +5,13 @@
 
 .. code-block:: console
 
-    $ pip install yandex-360
+    $ pip install yandex_360
 
 Подключение библиотеки
 ======================
 
-Библиотека является пакетом *yandex_360* с модулем функций *ya360*
+Библиотека является пакетом ``yandex_360`` с модулями функций ``ya360``, ``tools`` и ``antispam``
 
 .. code-block:: python
 
-    from yandex_360 import ya360
+    from yandex_360 import ya360, tools, antispam
