@@ -37,5 +37,5 @@ def edit_routing(token, orgID, body):
     url = 'https://api360.yandex.net/admin/v1/mail/routing/org/'+orgID+'/rules'
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
 
-    return safe_request('get', url, headers, json.dumps(body))
+    return safe_request('put', url, headers, json.dumps(body))
     
