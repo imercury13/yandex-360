@@ -16,7 +16,7 @@ setup(
     #url='https://ya360.uh.net.ru',
     license='MIT',
     project_urls={
-        "Documentation": "https://yandex-360.readthedocs.io/ru/1.3.0/",
+        "Documentation": "https://yandex-360.readthedocs.io/ru/1.3.1/",
         "Bug Tracker": "https://github.com/imercury13/yandex_360/issues"
     },
     classifiers=[
@@ -26,7 +26,7 @@ setup(
         'Programming Language :: Python'
     ],
     install_requires=[
-        'jreq',
+        'jreq=>1.1.0',
     ],
     include_package_data=True,
 )
