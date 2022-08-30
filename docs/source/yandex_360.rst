@@ -32,3 +32,11 @@
    :members:
    :undoc-members:
    :show-inheritance:
+
+Модуль yandex\_360.routing
+--------------------------
+
+.. automodule:: yandex_360.routing
+   :members:
+   :undoc-members:
+   :show-inheritance:
