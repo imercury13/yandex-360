@@ -10,8 +10,8 @@
 Подключение библиотеки
 ======================
 
-Библиотека является пакетом ``yandex_360`` с модулями функций ``ya360``, ``tools`` и ``antispam``
+Библиотека является пакетом ``yandex_360`` с модулями функций ``ya360``, ``tools``, ``antispam`` и ``routing``
 
 .. code-block:: python
 
-    from yandex_360 import ya360, tools, antispam
+    from yandex_360 import ya360, tools, antispam, routing
