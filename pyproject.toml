@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yandex-360"
+description = "Библиотека для Yandex 360 API"
+readme = "README.md"
+requires-python = ">=3.6.9"
+keywords = ["yandex", "yandex360", "yandex-api", "yandex360-api"]
+license = {text = "MIT"}
+classifiers = [
+    'Operating System :: MacOS :: MacOS X',
+    'Operating System :: Microsoft :: Windows',
+    'Operating System :: POSIX',
+    'Programming Language :: Python',
+]
+dependencies = [
+    'jreq>=1.1.0',
+]
+authors = [
+    {name = "Igor Kuptsov", email = "ya360@uh.net.ru"},
+]
+dynamic = ["version"]
+
+[tool.setuptools_scm]
+write_to = "yandex_360/_version.py"
+
+[tool.setuptools.dynamic]
+version = {attr = "yandex_360/_version.__version__"}
+
+[project.urls]
+"Bug Tracker" = "https://github.com/imercury13/yandex-360/issues"
+"Documentation" = "https://yandex-360.readthedocs.io/"
+"Download" = "https://github.com/imercury13/yandex-360"

@@ -128,3 +128,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+r.txt
+yandex_360/_version.py

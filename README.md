@@ -8,4 +8,4 @@ pip install yandex-360
 
 ## Документация
 
-[yandex_360](https://yandex-360.readthedocs.io/)
+[yandex-360](https://yandex-360.readthedocs.io/)
