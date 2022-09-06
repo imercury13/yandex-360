@@ -10,13 +10,13 @@ requires-python = ">=3.6.9"
 keywords = ["yandex", "yandex360", "yandex-api", "yandex360-api"]
 license = {text = "MIT"}
 classifiers = [
-    'Operating System :: MacOS :: MacOS X',
-    'Operating System :: Microsoft :: Windows',
-    'Operating System :: POSIX',
-    'Programming Language :: Python',
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Programming Language :: Python",
 ]
 dependencies = [
-    'jreq>=1.1.0',
+    "jreq >= 1.1.0",
 ]
 authors = [
     {name = "Igor Kuptsov", email = "ya360@uh.net.ru"},
