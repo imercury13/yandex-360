@@ -1,4 +1,4 @@
 jreq
-yandex-360
+yandex_360
 sphinx_sitemap
 sphinx-rtd-theme
