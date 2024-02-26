@@ -8,6 +8,7 @@ ya360_admin:mail_write_user_settings — управление настройка
 """
 
 from jreq.jreq import safe_request
+import json
 
 def show_sender_info (token, orgID, userID):
     """Функция позволяет просмотреть почтовый адрес, с которого отправляются письма по умолчанию, и настройки подписей сотрудника
@@ -21,7 +22,7 @@ def show_sender_info (token, orgID, userID):
 
     return safe_request('get',url, headers)
 
-def edit_sender_info (token, orgID, userID):
+def edit_sender_info (token, orgID, userID, body):
     """Функция позволяет управлять почтовым адресом сотрудника, с которого отправляются письма по умолчанию, и настройками его подписей
 
     :return: результат запроса
@@ -31,4 +32,4 @@ def edit_sender_info (token, orgID, userID):
     url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/users/{userID}/settings/sender_info'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
-    return safe_request('post',url, headers)
+    return safe_request('post',url, headers, json.dumps(body))
