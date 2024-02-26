@@ -1,4 +1,4 @@
-"""Модуль функций antispam"""
+"""Модуль функций antispam (26.02.2024)"""
 
 from jreq.jreq import safe_request
 import json

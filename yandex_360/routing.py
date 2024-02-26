@@ -1,4 +1,4 @@
-"""Модуль функций routing"""
+"""Модуль функций routing (26.02.2024)"""
 
 from jreq.jreq import safe_request
 import json
@@ -15,7 +15,7 @@ def show_routing(token, orgID):
 
     '''
 
-    url = 'https://api360.yandex.net/admin/v1/mail/routing/org/'+orgID+'/rules'
+    url = 'https://api360.yandex.net/admin/v1/org/'+orgID+'/mail/routing/rules'
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
 
     return safe_request('get', url, headers)
@@ -34,7 +34,7 @@ def edit_routing(token, orgID, body):
 
     '''
 
-    url = 'https://api360.yandex.net/admin/v1/mail/routing/org/'+orgID+'/rules'
+    url = 'https://api360.yandex.net/admin/v1/org/'+orgID+'/mail/routing/rules'
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
 
     return safe_request('put', url, headers, json.dumps(body))
