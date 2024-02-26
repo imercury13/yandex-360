@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 master_doc = 'index'
 
 project = 'Yandex 360 Lib'
-copyright = '2022, Igor Kuptsov'
+copyright = '2024, Igor Kuptsov'
 author = 'Igor Kuptsov'
 
 html_extra_path = ['_static/robots.txt']
