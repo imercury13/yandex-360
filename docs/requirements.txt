@@ -1,3 +1,4 @@
 jreq
 yandex-360
 sphinx_sitemap
+sphinx-rtd-theme
