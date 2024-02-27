@@ -73,9 +73,9 @@ def get_id_user_by_nickname(sstr, token, orgID):
     :rtype: dict
 
     """
-
-    url = 'perPage=10000'
-    usr = users.show_users(token, orgID, url)
+    
+    usr = users.show_users(token, orgID, 'perPage=10000')
+    
     if check_request(usr):
         for user in usr['users']:
             if user['nickname'] == sstr:

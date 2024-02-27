@@ -25,8 +25,8 @@ def show_users(token, orgID, url=None):
 
     """
 
-    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/?{url}'
-    print(url)
+    urll = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/?{url}'
+    print(urll)
     headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
 	
-    return safe_request('get', url, headers)
+    return safe_request('get', urll, headers)
