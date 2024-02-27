@@ -28,7 +28,7 @@ def get_id_group_by_label(sstr, token, orgID):
 
     """
 
-    url = 'perPage=10000'
+    url = 'perPage=1000'
     groups = ya360.show_groups(token, orgID, url)
     if check_request(groups):
         for group in groups['groups']:
@@ -74,11 +74,11 @@ def get_id_user_by_nickname(sstr, token, orgID):
 
     """
     
-    usr = users.show_users(token, orgID, 'perPage=10000')
+    users = users.show_users(token, orgID, 'perPage=1000')
     
-    if check_request(usr):
-        for user in usr['users']:
+    if check_request(users):
+        for user in users['users']:
             if user['nickname'] == sstr:
                 return {'id':user['id']}
     else:
-        return usr
+        return users

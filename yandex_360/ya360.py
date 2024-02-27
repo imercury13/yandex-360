@@ -329,12 +329,7 @@ def show_users(token, orgID, url=None):
     """
 
     return users.show_users(token, orgID, url)
-    """
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/?'+url
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
-	
-    return safe_request('get', url, headers)
-    """
+    
 
 def show_user(token, orgID, ID):
     """Функция вывода информации о пользователе
