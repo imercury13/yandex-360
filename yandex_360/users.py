@@ -90,32 +90,6 @@ def add_user(token, orgID, body):
 	
     return safe_request('post', url, headers, json.dumps(body))
 
-"""
-def delete_user(token, orgID, ID):
-    """Функция удаления пользователя
-
-    .. danger::
-        **Данная операция необратима, восстановить данные будет невозможно!**
-
-        Будут удалены все почтовые сообщения, а также папки и файлы на Яндекс Диске
-
-    :param token: :term:`Яндекс токен приложения`
-    :type token: str
-    :param orgID: :term:`ID организации в Яндекс 360`
-    :type orgID: str
-    :param ID: ID пользователя
-    :type ID: str
-    :return: результат запроса
-    :rtype: dict
-
-    """
-
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'+ID
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
-
-    return safe_request('delete', url, headers)
-"""
-
 def add_alias_user(token, orgID, userID, body):
     """Функция добавляет сотруднику алиас почтового ящика
 
