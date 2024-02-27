@@ -74,11 +74,11 @@ def get_id_user_by_nickname(sstr, token, orgID):
 
     """
     
-    users = users.show_users(token, orgID, 'perPage=1000')
+    usrs = users.show_users(token, orgID, 'perPage=1000')
     
-    if check_request(users):
-        for user in users['users']:
+    if check_request(usrs):
+        for user in usrs['users']:
             if user['nickname'] == sstr:
                 return {'id':user['id']}
     else:
-        return users
+        return usrs
