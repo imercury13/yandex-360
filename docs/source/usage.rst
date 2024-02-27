@@ -5,7 +5,7 @@
 
 .. code-block:: console
 
-    $ pip install yandex_360
+    $ pip install yandex_360==2.0.0.dev2
 
 Подключение библиотеки
 ======================
