@@ -99,3 +99,4 @@
             "type": str,
             "weight": int
         }
+
