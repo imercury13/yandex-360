@@ -86,7 +86,8 @@
    Тело запроса редактирования записи DNS
       * :func:`yandex_360.dns.edit_dns`
       .. code-block:: python
-        {
+         
+         {
             "address": str,
             "exchange": str,
             "name": str,
@@ -98,5 +99,5 @@
             "ttl": int,
             "type": str,
             "weight": int
-        }
+         }
 
