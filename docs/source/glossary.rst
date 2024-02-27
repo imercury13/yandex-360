@@ -120,3 +120,28 @@
                }
             ]
          }
+
+   Тело запроса добавления правила автоответа или пересылки
+      * :func:`yandex_360.mail.edit_user_rules`
+      .. code-block:: python
+
+         {
+            "autoreply": {
+               "ruleName": str,
+               "text": str
+            },
+            "forward": {
+               "address": str,
+               "ruleName": str,
+               "withStore": bool
+            }
+         }
+
+   Тело запроса автоматического сбора контактов
+      * :func:`yandex_360.mail.edit_address_book`
+      .. code-block:: python
+
+         {
+            "collectAddresses": bool
+         }
+
