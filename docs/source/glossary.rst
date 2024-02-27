@@ -62,21 +62,40 @@
                url += 'perPage=1000'
 
 
-      Тело запроса добавления записи DNS
-         .. code-block:: python
-            {
-               "address": str,
-               "exchange": str,
-               "flag": int,
-               "name": str,
-               "port": int,
-               "preference": int,
-               "priority": int,
-               "tag": str,
-               "target": str,
-               "text": str,
-               "ttl": int,
-               "type": str,
-               "value": str,
-               "weight": int
-            }
+   Тело запроса добавления записи DNS
+      * :func:`yandex_360.dns.add_dns`
+      .. code-block:: python
+         
+         {
+            "address": str,
+            "exchange": str,
+            "flag": int,
+            "name": str,
+            "port": int,
+            "preference": int,
+            "priority": int,
+            "tag": str,
+            "target": str,
+            "text": str,
+            "ttl": int,
+            "type": str,
+            "value": str,
+            "weight": int
+         }
+
+   Тело запроса редактирования записи DNS
+      * :func:`yandex_360.dns.edit_dns`
+      .. code-block:: python
+        {
+            "address": str,
+            "exchange": str,
+            "name": str,
+            "port": int,
+            "preference": int,
+            "priority": int,
+            "target": str,
+            "text": str,
+            "ttl": int,
+            "type": str,
+            "weight": int
+        }

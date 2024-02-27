@@ -63,7 +63,7 @@ def add_dns (token, orgID, domain, body):
     :type orgID: str
     :param domain: :term:`Полное доменное имя`
     :type domain: str
-    :param body: :term: `Тело запроса добавления записи DNS`
+    :param body: :term:`Тело запроса добавления записи DNS`
     :type body: dict
     :return: результат запроса
     :rtype: dict
@@ -78,21 +78,6 @@ def add_dns (token, orgID, domain, body):
 def edit_dns (token, orgID, domain, recordID, body):
     """Функция позволяет добавить DNS-запись
 
-    .. tips::
-        {
-            "address": str,
-            "exchange": str,
-            "name": str,
-            "port": int,
-            "preference": int,
-            "priority": int,
-            "target": str,
-            "text": str,
-            "ttl": int,
-            "type": str,
-            "weight": int
-        }
-
     :param token: :term:`Яндекс токен приложения`
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
@@ -101,7 +86,7 @@ def edit_dns (token, orgID, domain, recordID, body):
     :type domain: str
     :param recordID: :term:`ID записи`
     :type recordID: int
-    :param body: Тело запроса
+    :param body: :term:`Тело запроса редактирования записи DNS`
     :type body: dict
     :return: результат запроса
     :rtype: dict
