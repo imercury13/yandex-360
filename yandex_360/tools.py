@@ -1,6 +1,7 @@
 """Модуль вспомогательных функций"""
 
-from . import ya360, users
+from . import ya360
+from . import users
 
 def check_request(req):
     """Функция проверки ответа запроса
@@ -74,10 +75,10 @@ def get_id_user_by_nickname(sstr, token, orgID):
     """
 
     url = 'perPage=10000'
-    users = users.show_users(token, orgID, url)
-    if check_request(users):
-        for user in users['users']:
+    usr = users.show_users(token, orgID, url)
+    if check_request(usr):
+        for user in usr['users']:
             if user['nickname'] == sstr:
                 return {'id':user['id']}
     else:
-        return users
+        return usr
