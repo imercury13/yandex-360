@@ -57,7 +57,7 @@ def delete_dns (token, orgID, domain, recordID):
 def add_dns (token, orgID, domain, body):
     """Функция позволяет добавить DNS-запись
 
-    .. code-block::
+    .. tips::
         {
             "address": str,
             "exchange": str,
@@ -96,7 +96,7 @@ def add_dns (token, orgID, domain, body):
 def edit_dns (token, orgID, domain, recordID, body):
     """Функция позволяет добавить DNS-запись
 
-    .. code-block::
+    .. tips::
         {
             "address": str,
             "exchange": str,
