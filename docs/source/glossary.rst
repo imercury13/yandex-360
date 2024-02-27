@@ -86,7 +86,7 @@
    Тело запроса редактирования записи DNS
       * :func:`yandex_360.dns.edit_dns`
       .. code-block:: python
-         
+
          {
             "address": str,
             "exchange": str,
@@ -101,3 +101,22 @@
             "weight": int
          }
 
+   Тело запроса редактирования основного адреса и подписи
+      * :func:`yandex_360.mail.edit_sender_info`
+      .. code-block:: python
+
+         {
+            "defaultFrom": str,
+            "fromName": str,
+            "signPosition": str,
+            "signs": [
+               {
+                  "emails": [
+                     str
+                  ],
+                  "isDefault": bool,
+                  "lang": str,
+                  "text": str
+               }
+            ]
+         }

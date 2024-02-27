@@ -41,7 +41,7 @@ def edit_sender_info (token, orgID, userID, body):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :param body: тело запроса
+    :param body: :term:`Тело запроса редактирования основного адреса и подписи`
     :type body: dict
     :return: результат запроса
     :rtype: dict
