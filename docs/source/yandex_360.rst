@@ -17,6 +17,14 @@
    :undoc-members:
    :show-inheritance:
 
+Модуль yandex\_360.dns
+------------------------
+
+.. automodule:: yandex_360.dns
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Модуль yandex\_360.tools
 ------------------------
 
