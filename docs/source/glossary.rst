@@ -38,7 +38,7 @@
       
       Используется в функциях:
          * :func:`yandex_360.dns.show_dns`
-         * :func:`yandex_360.ya360.show_users`
+         * :func:`yandex_360.users.show_users`
          * :func:`yandex_360.ya360.show_groups`
          * :func:`yandex_360.ya360.show_departments`
 
