@@ -345,10 +345,7 @@ def show_user(token, orgID, ID):
 
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'+ID+'/'
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
-
-    return safe_request('get', url, headers)
+    return users.show_user(token, orgID, ID)
 
 def update_user(token, orgID, body, ID):
     """Функция обновления информации о пользователе
@@ -366,10 +363,7 @@ def update_user(token, orgID, body, ID):
 
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'+ID+'/'
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
-	
-    return safe_request('patch', url, headers, json.dumps(body))
+    return users.update_user(token, orgID, body, ID)
 
 def create_user(token, orgID, body):
     """Функция создания пользователя
@@ -384,10 +378,7 @@ def create_user(token, orgID, body):
     :rtype: dict
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
-	
-    return safe_request('post', url, headers, json.dumps(body))
+    return users.add_user(token, orgID, body)
 
 def delete_user(token, orgID, ID):
     """Функция удаления пользователя
@@ -429,10 +420,7 @@ def add_alias_user(token, orgID, ID, body):
 
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'+ID+'/aliases/'
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
-
-    return safe_request('post', url, headers, json.dumps(body))
+    return users.add_alias_user(token, orgID, ID, body)
 
 def delete_alias_user(token, orgID, ID, alias):
     """Функция удаления альяса у пользователя
@@ -450,7 +438,4 @@ def delete_alias_user(token, orgID, ID, alias):
 
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'+ID+'/aliases/'+alias+'/'
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
-
-    return safe_request('delete', url, headers)
+    return users.delete_alias_user(token, orgID, ID, alias)
