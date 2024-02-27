@@ -57,17 +57,6 @@ def delete_dns (token, orgID, domain, recordID):
 def add_dns (token, orgID, domain, body):
     """Функция позволяет добавить DNS-запись
 
-    :param token: :term:`Яндекс токен приложения`
-    :type token: str
-    :param orgID: :term:`ID организации в Яндекс 360`
-    :type orgID: str
-    :param domain: :term:`Полное доменное имя`
-    :type domain: str
-    :param body: :term: Тело запроса
-    :type body: dict
-    :return: результат запроса
-    :rtype: dict
-
     .. code-block:: python
         {
             "address": str,
@@ -86,6 +75,17 @@ def add_dns (token, orgID, domain, body):
             "weight": int
         }
 
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param domain: :term:`Полное доменное имя`
+    :type domain: str
+    :param body: Тело запроса
+    :type body: dict
+    :return: результат запроса
+    :rtype: dict
+
     """
 
     url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains/{domain}/dns'
@@ -95,19 +95,6 @@ def add_dns (token, orgID, domain, body):
 
 def edit_dns (token, orgID, domain, recordID, body):
     """Функция позволяет добавить DNS-запись
-
-    :param token: :term:`Яндекс токен приложения`
-    :type token: str
-    :param orgID: :term:`ID организации в Яндекс 360`
-    :type orgID: str
-    :param domain: :term:`Полное доменное имя`
-    :type domain: str
-    :param recordID: :term:`ID записи`
-    :type recordID: int
-    :param body: :term: Тело запроса
-    :type body: dict
-    :return: результат запроса
-    :rtype: dict
 
     .. code-block:: python
         {
@@ -124,6 +111,19 @@ def edit_dns (token, orgID, domain, recordID, body):
             "weight": int
         }
 
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param domain: :term:`Полное доменное имя`
+    :type domain: str
+    :param recordID: :term:`ID записи`
+    :type recordID: int
+    :param body: Тело запроса
+    :type body: dict
+    :return: результат запроса
+    :rtype: dict
+ 
     """
 
     url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains/{domain}/dns/{recordID}'
