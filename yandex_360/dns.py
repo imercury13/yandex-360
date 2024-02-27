@@ -57,31 +57,13 @@ def delete_dns (token, orgID, domain, recordID):
 def add_dns (token, orgID, domain, body):
     """Функция позволяет добавить DNS-запись
 
-    .. tips::
-        {
-            "address": str,
-            "exchange": str,
-            "flag": int,
-            "name": str,
-            "port": int,
-            "preference": int,
-            "priority": int,
-            "tag": str,
-            "target": str,
-            "text": str,
-            "ttl": int,
-            "type": str,
-            "value": str,
-            "weight": int
-        }
-
     :param token: :term:`Яндекс токен приложения`
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
     :param domain: :term:`Полное доменное имя`
     :type domain: str
-    :param body: Тело запроса
+    :param body: :term: `Тело запроса добавления записи DNS`
     :type body: dict
     :return: результат запроса
     :rtype: dict

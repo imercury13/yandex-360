@@ -60,3 +60,23 @@
                url += 'perPage='+str(args.perPage)+'&'
             else:
                url += 'perPage=1000'
+
+
+      Тело запроса добавления записи DNS
+         .. code-block:: python
+            {
+               "address": str,
+               "exchange": str,
+               "flag": int,
+               "name": str,
+               "port": int,
+               "preference": int,
+               "priority": int,
+               "tag": str,
+               "target": str,
+               "text": str,
+               "ttl": int,
+               "type": str,
+               "value": str,
+               "weight": int
+            }
