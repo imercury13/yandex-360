@@ -6,7 +6,6 @@
     **directory:read_users** — просмотр;
     **directory:write_users** — просмотр и изменение.
 
-
 """
 
 from jreq.jreq import safe_request
