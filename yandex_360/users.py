@@ -32,7 +32,7 @@ def show_users(token, orgID, url=None):
     return safe_request('get', url, headers)
 
 def show_user(token, orgID, userID):
-    """Функция Возвращает информацию об одном сотруднике
+    """Функция возвращает информацию об одном сотруднике
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
@@ -198,8 +198,8 @@ def delete_user_contacts(token, orgID, userID):
     return safe_request('delete', url, headers)
 
 
-def show_user(token, orgID, userID):
-    """Функция Возвращает информацию об одном сотруднике
+def show_user_2fa(token, orgID, userID):
+    """Функция возвращает информацию о статусе 2FA сотрудника
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
@@ -212,7 +212,47 @@ def show_user(token, orgID, userID):
 
     """
 
-    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/{userID}'
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/{userID}/2fa'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
     return safe_request('get', url, headers)
+
+def delete_user_2fa(token, orgID, userID):
+    """Функция сбрасывает телефон для 2FA у пользователя организации
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param userID: :term:`ID пользователя в Яндекс 360`
+    :type userID: str
+    :return: результат запроса
+    :rtype: dict
+
+    """
+
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/{userID}/2fa'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('delete', url, headers)
+
+def upload_user_avatar(token, orgID, userID, avatar):
+    """Функция управляет потретами пользователей организации. Работает только для пользователей, созданных на домене организации
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param userID: :term:`ID пользователя в Яндекс 360`
+    :type userID: str
+    :param avatar: image/png
+    :type avatar: str
+    :return: результат запроса
+    :rtype: dict
+
+    """
+
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/{userID}/avatar'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('put', url, headers, avatar)
