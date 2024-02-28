@@ -20,7 +20,7 @@ def add_domain (token, orgID, domain):
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
     :param domain: Полное имя домена
-    :type body: dict
+    :type domain: str
     :return: результат запроса
     :rtype: dict
 
