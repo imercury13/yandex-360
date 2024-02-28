@@ -245,8 +245,8 @@ def upload_user_avatar(token, orgID, userID, avatar):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :param avatar: image/png
-    :type avatar: str
+    :param avatar: данные картинки в binary 
+    :type avatar: binary
     :return: результат запроса
     :rtype: dict
 
