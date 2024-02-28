@@ -52,8 +52,8 @@ def update_group(token, orgID, groupID, body):
 
 	return safe_request('patch', url, headers, json.dumps(body))
 
-def delete_group(token, orgID, ID):
-    """Функция удаления группы
+def delete_group(token, orgID, groupID):
+    """Функция удаляет группу. При этом участники, которые входили в группу, не удаляются
 
     .. danger::
         **Данная операция необратима, восстановить данные будет невозможно!**
@@ -69,13 +69,13 @@ def delete_group(token, orgID, ID):
 
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'+ID+'/'
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/groups/{groupID}'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
     return safe_request('delete', url, headers)
 
-def add_member_group(token, orgID, body, ID):
-    """Функция добавления участника в группу
+def add_member_group(token, orgID, groupID, body):
+    """Функция добавляет участника в группу. Участником группы может быть сотрудник организации, отдельное подразделение или другая группа
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
@@ -90,13 +90,13 @@ def add_member_group(token, orgID, body, ID):
 
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'+ID+'/members'
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/groups/{groupID}/members'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
     return safe_request('post', url, headers, json.dumps(body))
 
-def delete_member_group(token, orgID, ID, userType, userID):
-    """Функция удаления участника из группы
+def delete_member_group(token, orgID, groupID, memberType, memberID):
+    """Функция удаляет конкретного участника из группы: сотрудника организации, подразделение или вложенную группу
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
@@ -113,13 +113,32 @@ def delete_member_group(token, orgID, ID, userType, userID):
 
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'+ID+'/members/'+userType+'/'+userID
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/groups/{groupID}/members/{memberType}/{memberID}'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
     return safe_request('delete', url, headers)
 
-def show_group(token, orgID, ID):
-    """Функция отображения информации о группе
+def delete_all_members_group(token, orgID, groupID):
+    """Функция удаляет из группы всех участников
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param ID: ID группы
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
+
+    """
+
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/groups/{groupID}/members'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('delete', url, headers)
+
+def show_group(token, orgID, groupID):
+    """Функция возвращает информацию об одной группе
 	
     :param token: :term:`Яндекс токен приложения`
     :type token: str
@@ -132,13 +151,13 @@ def show_group(token, orgID, ID):
 
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'+ID+'/'
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/groups/{groupID}'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
     
     return safe_request('get', url, headers)
 
-def show_members_group(token, orgID, ID):
-    """Функция отображения членов группы
+def show_members_group(token, orgID, groupID):
+    """Функция возвращает список участников группы, таких как сотрудники, подразделения или другие группы
 	
     :param token: :term:`Яндекс токен приложения`
     :type token: str
@@ -151,13 +170,13 @@ def show_members_group(token, orgID, ID):
 
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/'+ID+'/members/'
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/groups/{groupID}/members/'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
     
     return safe_request('get', url, headers)
 
 def show_groups(token, orgID, url=None):
-    """Функция вывода списка всех групп
+    """Функция возвращает список групп с постраничной навигацией
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
@@ -170,7 +189,49 @@ def show_groups(token, orgID, url=None):
 
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/groups/?'+url
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/groups/?{url}'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 	
     return safe_request('get', url, headers)
+
+def update_admin_group(token, orgID, groupID, body):
+	"""Функция назначает руководителей группы. Руководителем группы может стать любой сотрудник организации. Изменяет сразу весь список руководителей
+	
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param body: тело запроса
+    :type body: dict
+    :param ID: ID группы
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
+
+	"""
+
+	url = f'https://api360.yandex.net/directory/v1/org/{orgID}/groups/{groupID}/admins'
+	headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+	return safe_request('put', url, headers, json.dumps(body))
+
+def delete_admins_group(token, orgID, groupID):
+	"""Функция удаляет всех руководителей группы
+	
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param body: тело запроса
+    :type body: dict
+    :param ID: ID группы
+    :type ID: str
+    :return: результат запроса
+    :rtype: dict
+
+	"""
+
+	url = f'https://api360.yandex.net/directory/v1/org/{orgID}/groups/{groupID}/admins'
+	headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+	return safe_request('delete', url, headers)
