@@ -399,10 +399,7 @@ def delete_user(token, orgID, ID):
 
     """
 
-    url = 'https://api360.yandex.net/directory/v1/org/'+orgID+'/users/'+ID
-    headers={'Authorization': 'OAuth '+token, 'Content-type': 'application/json'}
-
-    return safe_request('delete', url, headers)
+    return users.delete_user(token, orgID, ID)
 
 def add_alias_user(token, orgID, ID, body):
     """Функция добавления альяса пользователю
