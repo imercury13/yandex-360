@@ -17,6 +17,14 @@
    :undoc-members:
    :show-inheritance:
 
+Модуль yandex\_360.departments
+------------------------
+
+.. automodule:: yandex_360.departments
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Модуль yandex\_360.mail
 ------------------------
 
