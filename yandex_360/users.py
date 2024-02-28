@@ -51,8 +51,8 @@ def show_user(token, orgID, userID):
     return safe_request('get', url, headers)
 
 def update_user(token, orgID, body, userID):
-    """Функция изменяет информацию о сотруднике.
-Изменяются значения только тех параметров, которые были переданы в запросе.
+    """Функция изменяет информацию о сотруднике. 
+    Изменяются значения только тех параметров, которые были переданы в запросе.
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
@@ -128,6 +128,47 @@ def delete_alias_user(token, orgID, userID, alias):
     """
 
     url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/{userID}/aliases/{alias}'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('delete', url, headers)
+
+def update_user_contacts(token, orgID, userID, body):
+    """Функция изменяет контактную информацию сотрудника. 
+    Автоматически созданную контактную информацию (с флагом synthetic) нельзя изменить или удалить
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param userID: :term:`ID пользователя в Яндекс 360`
+    :type userID: str
+    :param body: тело запроса
+    :type body: dict
+    :return: результат запроса
+    :rtype: dict
+
+    """
+
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/{userID}/contacts'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('put', url, headers, json.dumps(body))
+
+def delete_user_contacts(token, orgID, userID):
+    """Функция удаляет контактную информацию сотрудника внесенную вручную
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param userID: :term:`ID пользователя в Яндекс 360`
+    :type userID: str
+    :return: результат запроса
+    :rtype: dict
+
+    """
+
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/{userID}/contacts'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
     return safe_request('delete', url, headers)
