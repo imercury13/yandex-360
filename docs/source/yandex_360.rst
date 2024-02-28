@@ -41,6 +41,14 @@
    :undoc-members:
    :show-inheritance:
 
+Модуль yandex\_360.org
+------------------------
+
+.. automodule:: yandex_360.org
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Модуль yandex\_360.tools
 ------------------------
 
