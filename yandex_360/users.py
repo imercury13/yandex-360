@@ -253,6 +253,6 @@ def upload_user_avatar(token, orgID, userID, avatar):
     """
 
     url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/{userID}/avatar'
-    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'image/png'}
 
     return safe_request('put', url, headers, avatar)
