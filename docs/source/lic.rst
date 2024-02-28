@@ -1,7 +1,7 @@
 MIT License
 ===========
 
-Copyright (c) 2022 Igor Kuptsov
+Copyright (c) 2024 Igor Kuptsov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
