@@ -2,6 +2,7 @@
 
 from . import ya360
 from . import users
+from . import departments
 
 def check_request(req):
     """Функция проверки ответа запроса
@@ -52,13 +53,13 @@ def get_id_department_by_label(sstr, token, orgID):
     """
 
     url = 'perPage=1000'
-    departments = ya360.show_departments(token, orgID, url)
+    dep = departments.show_departments(token, orgID, url)
     if check_request(departments):
-        for department in departments['departments']:
+        for department in dep['departments']:
             if department['label'] == sstr:
                 return {'id':department['id']}
     else:
-        return departments
+        return dep
 
 def get_id_user_by_nickname(sstr, token, orgID):
     """Функция преобразования nickname пользователя в id

@@ -50,7 +50,7 @@ def show_user(token, orgID, userID):
 
     return safe_request('get', url, headers)
 
-def update_user(token, orgID, body, userID):
+def update_user(token, orgID, userID, body):
     """Функция изменяет информацию о сотруднике. 
     Изменяются значения только тех параметров, которые были переданы в запросе.
 
