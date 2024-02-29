@@ -75,3 +75,27 @@ def delete_domain (token, orgID, domain):
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
     return safe_request('delete',url, headers)
+
+def status_domain (token, orgID, domain):
+    """Проверяет статус подключения всех доменов.
+
+    .. note::
+        Запрос позволяет получить результат последней проверки, дату и время ее выполнения, а также дату и время следующей проверки.
+
+        **Для кириллических доменов (например домен.рф) используйте кодировку Punycode.**
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param domain: Полное имя домена
+    :type domain: str
+    :return: результат запроса
+    :rtype: dict
+
+    """
+
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains/{domain}/status'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('get',url, headers)
