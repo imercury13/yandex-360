@@ -57,6 +57,7 @@ def update_user(token, orgID, userID, body):
         Изменяются значения только тех параметров, которые были переданы в запросе.
 
     .. code-block::
+    
         Test
 
     :param token: :term:`Яндекс токен приложения`
