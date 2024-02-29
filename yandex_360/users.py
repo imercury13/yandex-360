@@ -60,7 +60,7 @@ def update_user(token, orgID, userID, body):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param body: тело запроса
+    :param body: :numref:`тело запроса`
     :type body: dict
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
@@ -71,31 +71,31 @@ def update_user(token, orgID, userID, body):
         :caption: тело запроса
 
         {
-            "about": string,
-            "birthday": string,
+            "about": str,
+            "birthday": str,
             "contacts": [
                 {
-                    "label": string,
-                    "type": string,
-                    "value": string
+                    "label": str,
+                    "type": str,
+                    "value": str
                 }
             ],
-            "departmentId": integer,
-            "displayName": string,
-            "externalId": string,
-            "gender": string,
-            "isAdmin": boolean,
-            "isEnabled": boolean,
-            "language": string,
+            "departmentId": int,
+            "displayName": str,
+            "externalId": str,
+            "gender": str,
+            "isAdmin": bool,
+            "isEnabled": bool,
+            "language": str,
             "name": {
-                "first": string,
-                "last": string,
-                "middle": string
+                "first": str,
+                "last": str,
+                "middle": str
             },
-            "password": string,
-            "passwordChangeRequired": boolean,
-            "position": string,
-            "timezone": string
+            "password": str,
+            "passwordChangeRequired": bool,
+            "position": str,
+            "timezone": str
         }
 
     """
