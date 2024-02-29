@@ -202,10 +202,24 @@ def update_user_contacts(token, orgID, userID, body):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :param body: тело запроса
+    :param body: :numref:`Тело запроса update_user_contacts`
     :type body: dict
     :return: результат запроса
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса
+        :name: Тело запроса update_user_contacts
+
+        {
+            "contacts": [
+                {
+                    "label": str,
+                    "type": str,
+                    "value": str
+                }
+            ]
+        }
 
     """
 
