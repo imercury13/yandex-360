@@ -90,8 +90,50 @@ def status_domain (token, orgID, domain):
     :type orgID: str
     :param domain: Полное имя домена
     :type domain: str
-    :return: результат запроса
+    :return: :numref:`результат запроса <Результат запроса status_domain>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса status_domain
+        :name: Результат запроса status_domain
+
+        {
+            "domains": [
+                {
+                    "country": str,
+                    "delegated": bool,
+                    "master": bool,
+                    "mx": bool,
+                    "name": str,
+                    "status": {
+                        "dkim": {
+                            "match": bool,
+                            "value": str
+                        },
+                        "lastAdded": str,
+                        "lastCheck": str,
+                        "mx": {
+                            "match": bool,
+                            "value": str
+                        },
+                        "name": str,
+                        "ns": {
+                            "match": bool,
+                            "value": str
+                        },
+                        "spf": {
+                            "match": bool,
+                            "value": str
+                        }
+                    },
+                    "verified": bool
+                }
+            ],
+            "page": int,
+            "pages": int,
+            "perPage": int,
+            "total": int
+        }
 
     """
 
@@ -99,3 +141,78 @@ def status_domain (token, orgID, domain):
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
     return safe_request('get',url, headers)
+
+def enable_domain_dkim (token, orgID, domain):
+    """Включить DKIM подпись для домена
+
+    .. note::
+        **Для кириллических доменов (например домен.рф) используйте кодировку Punycode.**
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param domain: Полное имя домена
+    :type domain: str
+    :return: http код
+    :rtype: dict
+
+    """
+
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains/{domain}/dkim/enable'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('post',url, headers)
+
+def disable_domain_dkim (token, orgID, domain):
+    """Выключить DKIM подпись для домена
+
+    .. note::
+        **Для кириллических доменов (например домен.рф) используйте кодировку Punycode.**
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param domain: Полное имя домена
+    :type domain: str
+    :return: http код
+    :rtype: dict
+
+    """
+
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains/{domain}/dkim/disable'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('post',url, headers)
+
+def status_domain_dkim (token, orgID, domain):
+    """Получить статус DKIM подпись для домена
+
+    .. note::
+        **Для кириллических доменов (например домен.рф) используйте кодировку Punycode.**
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param domain: Полное имя домена
+    :type domain: str
+    :return: :numref:`результат запроса <Результат запроса status_domain_dkim>`
+    :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса status_domain_dkim
+        :name: Результат запроса status_domain_dkim
+
+        {
+            "enabled": bool,
+            "publicKey": str
+        }
+
+    """
+
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains/{domain}/dkim/disable'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('post',url, headers)
