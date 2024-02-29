@@ -90,7 +90,7 @@ def status_domain (token, orgID, domain):
     :type orgID: str
     :param domain: Полное имя домена
     :type domain: str
-    :return: :numref:`результат запроса <Результат запроса status_domain>`
+    :return: :numref:`результат запроса %s <Результат запроса status_domain>`
     :rtype: dict
 
     .. code-block:: python
@@ -198,7 +198,7 @@ def status_domain_dkim (token, orgID, domain):
     :type orgID: str
     :param domain: Полное имя домена
     :type domain: str
-    :return: :numref:`результат запроса <Результат запроса status_domain_dkim>`
+    :return: :numref:`результат запроса %s <Результат запроса status_domain_dkim>`
     :rtype: dict
 
     .. code-block:: python
