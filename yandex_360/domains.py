@@ -75,7 +75,7 @@ def show_domains(token, orgID, url=None):
     :type orgID: str
     :param url: :term:`Ключи разбивки на страницы`
     :type url: str or None
-    :return: 'numref'`результат запроса %s <Результат запроса show_domain>`
+    :return: :numref:`результат запроса %s <Результат запроса show_domain>`
     :rtype: dict
 
     .. code-block:: python
