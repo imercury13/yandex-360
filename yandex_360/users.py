@@ -60,7 +60,7 @@ def update_user(token, orgID, userID, body):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param body: :numref:`Тело запроса update_user`
+    :param body: :ref:`Тело запроса update_user`
     :type body: dict
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
@@ -68,8 +68,7 @@ def update_user(token, orgID, userID, body):
     :rtype: dict
 
     .. code-block:: python
-        :caption: Тело запроса
-        :name: Тело запроса update_user
+        :caption: Тело запроса update_user
 
         {
             "about": str,
@@ -202,14 +201,13 @@ def update_user_contacts(token, orgID, userID, body):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :param body: :numref:`Тело запроса update_user_contacts`
+    :param body: :ref:`Тело запроса update_user_contacts`
     :type body: dict
     :return: результат запроса
     :rtype: dict
 
     .. code-block:: python
-        :caption: Тело запроса
-        :name: Тело запроса update_user_contacts
+        :caption: Тело запроса update_user_contacts
 
         {
             "contacts": [
