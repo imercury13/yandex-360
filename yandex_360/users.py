@@ -61,7 +61,6 @@ def update_user(token, orgID, userID, body):
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
     :param body: .. code-block::
-                    
                     Test
 
     :type body: dict
