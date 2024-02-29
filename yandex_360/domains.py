@@ -21,8 +21,17 @@ def add_domain (token, orgID, domain):
     :type orgID: str
     :param domain: Полное имя домена
     :type domain: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса add_domain>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса add_domain
+        :name: Результат запроса add_domain
+
+        {
+            "domain": str,
+            "name": str
+        }
 
     """
 
@@ -41,61 +50,12 @@ def show_domains(token, orgID, url=None):
     :type orgID: str
     :param url: :term:`Ключи разбивки на страницы`
     :type url: str or None
-    :return: результат запроса
-    :rtype: dict
-
-    """
-
-    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains/?{url}'
-    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
-	
-    return safe_request('get', url, headers)
-
-def delete_domain (token, orgID, domain):
-    """Функция позволяет удалить домен.
-
-    .. note::
-        Вы можете удалить любой домен, кроме технического.
-
-    .. danger::
-        **Данная операция необратима, восстановить данные будет невозможно!**
-
-    :param token: :term:`Яндекс токен приложения`
-    :type token: str
-    :param orgID: :term:`ID организации в Яндекс 360`
-    :type orgID: str
-    :param domain: Полное имя домена
-    :type domain: str
-    :return: результат запроса
-    :rtype: dict
-
-    """
-
-    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains{domain}'
-    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
-
-    return safe_request('delete',url, headers)
-
-def status_domain (token, orgID, domain):
-    """Проверяет статус подключения всех доменов.
-
-    .. note::
-        Запрос позволяет получить результат последней проверки, дату и время ее выполнения, а также дату и время следующей проверки.
-
-        **Для кириллических доменов (например домен.рф) используйте кодировку Punycode.**
-
-    :param token: :term:`Яндекс токен приложения`
-    :type token: str
-    :param orgID: :term:`ID организации в Яндекс 360`
-    :type orgID: str
-    :param domain: Полное имя домена
-    :type domain: str
-    :return: :numref:`результат запроса %s <Результат запроса status_domain>`
+    :return: 'numref'`результат запроса %s <Результат запроса show_domain>`
     :rtype: dict
 
     .. code-block:: python
-        :caption: Результат запроса status_domain
-        :name: Результат запроса status_domain
+        :caption: Результат запроса show_domain
+        :name: Результат запроса show_domain
 
         {
             "domains": [
@@ -133,6 +93,69 @@ def status_domain (token, orgID, domain):
             "pages": int,
             "perPage": int,
             "total": int
+        }
+
+    """
+
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains/?{url}'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+	
+    return safe_request('get', url, headers)
+
+def delete_domain (token, orgID, domain):
+    """Функция позволяет удалить домен.
+
+    .. note::
+        Вы можете удалить любой домен, кроме технического.
+
+    .. danger::
+        **Данная операция необратима, восстановить данные будет невозможно!**
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param domain: Полное имя домена
+    :type domain: str
+    :return: http код
+    :rtype: dict
+
+    """
+
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains{domain}'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('delete',url, headers)
+
+def status_domain (token, orgID, domain):
+    """Проверяет статус подключения домена.
+
+    .. note::
+        Запрос позволяет получить результат последней проверки, дату и время ее выполнения, а также дату и время следующей проверки.
+
+        **Для кириллических доменов (например домен.рф) используйте кодировку Punycode.**
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param domain: Полное имя домена
+    :type domain: str
+    :return: :numref:`результат запроса %s <Результат запроса status_domain>`
+    :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса status_domain
+        :name: Результат запроса status_domain
+
+        {
+            "methods": [
+                {
+                    "code": str,
+                    "method": str
+                }
+            ],
+            "status": str
         }
 
     """
