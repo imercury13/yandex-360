@@ -60,7 +60,7 @@ def update_user(token, orgID, userID, body):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param body: :numref:`тело запроса`
+    :param body: :numfig:`тело запроса`
     :type body: dict
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
