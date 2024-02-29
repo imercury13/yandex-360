@@ -32,7 +32,10 @@ def add_department(token, orgID, body):
     return safe_request('post', url, headers, json.dumps(body))
 
 def update_department(token, orgID, depID, body):
-    """Функция изменяет информацию о подразделении. Изменяются значения только тех параметров, которые были переданы в запросе.
+    """Функция изменяет информацию о подразделении.
+    
+    .. note::
+        Изменяются значения только тех параметров, которые были переданы в запросе.
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
@@ -53,7 +56,10 @@ def update_department(token, orgID, depID, body):
     return safe_request('patch', url, headers, json.dumps(body))
 
 def delete_department(token, orgID, depID):
-    """Функция удаляет подразделение. Запрос может быть выполнен только для подразделения без сотрудников и вложенных подразделений
+    """Функция удаляет подразделение.
+    
+    .. note::
+        Запрос может быть выполнен только для подразделения без сотрудников и вложенных подразделений
 
     .. danger::
         **Данная операция необратима, восстановить данные будет невозможно!**
@@ -75,7 +81,10 @@ def delete_department(token, orgID, depID):
     return safe_request('delete', url, headers)
 
 def add_alias_department(token, orgID, depID, body):
-    """Функция добавляет подразделению алиас почтовой рассылки. Запрос может быть выполнен только для подразделений, у которых уже указано основное имя почтовой рассылки в поле label
+    """Функция добавляет подразделению алиас почтовой рассылки.
+    
+    .. note::
+        Запрос может быть выполнен только для подразделений, у которых уже указано основное имя почтовой рассылки в поле **label**
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
@@ -97,6 +106,9 @@ def add_alias_department(token, orgID, depID, body):
 
 def delete_alias_department(token, orgID, depID, alias):
     """Функция удаляет алиас почтовой рассылки подразделения
+
+    .. danger::
+        **Данная операция необратима, восстановить данные будет невозможно!**
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
