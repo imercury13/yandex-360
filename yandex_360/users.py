@@ -56,6 +56,11 @@ def update_user(token, orgID, userID, body):
     .. note::
         Изменяются значения только тех параметров, которые были переданы в запросе.
 
+    .. code-block::
+        {
+            trte:rerewq
+        }
+
     :param token: :term:`Яндекс токен приложения`
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`

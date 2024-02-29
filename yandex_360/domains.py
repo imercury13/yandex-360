@@ -51,9 +51,9 @@ def show_domains(token, orgID, url=None):
 	
     return safe_request('get', url, headers)
 
-def add_domain (token, orgID, domain):
+def delete_domain (token, orgID, domain):
     """Функция позволяет удалить домен.
-    
+
     .. note::
         Вы можете удалить любой домен, кроме технического.
 
@@ -74,4 +74,4 @@ def add_domain (token, orgID, domain):
     url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains{domain}'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
-    return safe_request('post',url, headers)
+    return safe_request('delete',url, headers)
