@@ -29,8 +29,33 @@ def add_domain (token, orgID, domain):
         :name: Результат запроса add_domain
 
         {
-            "domain": str,
-            "name": str
+            "country": str,
+            "delegated": bool,
+            "master": bool,
+            "mx": bool,
+            "name": str,
+            "status": {
+                "dkim": {
+                    "match": bool,
+                    "value": str
+                },
+                "lastAdded": str,
+                "lastCheck": str,
+                "mx": {
+                    "match": bool,
+                    "value": str
+                },
+                "name": str,
+                "ns": {
+                    "match": bool,
+                    "value": str
+                },
+                "spf": {
+                    "match": bool,
+                    "value": str
+                }
+            },
+            "verified": bool
         }
 
     """
