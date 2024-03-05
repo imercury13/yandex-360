@@ -57,6 +57,38 @@
    :undoc-members:
    :show-inheritance:
 
+Модуль yandex\_360.pwd
+------------------------
+
+.. automodule:: yandex_360.pwd
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Модуль yandex\_360.auth
+------------------------
+
+.. automodule:: yandex_360.auth
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Модуль yandex\_360.logs
+------------------------
+
+.. automodule:: yandex_360.logs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Модуль yandex\_360.2fa
+------------------------
+
+.. automodule:: yandex_360.2fa
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Модуль yandex\_360.org
 ------------------------
 
