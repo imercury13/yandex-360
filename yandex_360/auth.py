@@ -77,3 +77,24 @@ def edit_domain_sessions (token, orgID, body):
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
     return safe_request('post',url, headers, json.dumps(body))
+
+def close_domain_sessions(token, orgID, userID):
+    """Функция позволяет выйти из аккаунта определенного пользователя на всех устройствах, где произведен вход.
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param userID: :term:`ID пользователя в Яндекс 360`
+    :type userID: str
+    :return: результат запроса
+    :rtype: dict
+
+
+
+    """
+
+    url = f'https://api360.yandex.net/security/v1/org/{orgID}/domain_sessions/users/{userID}/'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+	
+    return safe_request('put', url, headers)
