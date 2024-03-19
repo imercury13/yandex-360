@@ -4,7 +4,7 @@
 from jreq.jreq import safe_request
 import json
 
-def disk_log(token, orgID, pageSize=100, url=None):
+def disk_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterDate=None, includeUids=None, excludeUids=None):
     """Функция возвращает список событий в аудит-логе Диска организации.
 
     :param token: :term:`Яндекс токен приложения`
@@ -13,6 +13,16 @@ def disk_log(token, orgID, pageSize=100, url=None):
     :type orgID: str
     :param pageSize: Количество событий на странице
     :type pageSize: int
+    :param pageToken: Токен постраничной навигации
+    :type pageToken: str
+    :param beforeDate: Верхняя граница периода выборки в формате ISO 8601
+    :type beforeDate: str
+    :param afterDate: Нижняя граница периода выборки в формате ISO 8601
+    :type afterDate: str
+    :param includeUids: Список пользователей, действия которых должны быть включены в список событий
+    :type includeUids: list
+    :param excludeUids: Список пользователей, действия которых должны быть исключены из списка событий
+    :type excludeUids: list
     :return: :numref:`результат запроса %s <Результат запроса disk_log>`
     :rtype: dict
 
@@ -48,11 +58,16 @@ def disk_log(token, orgID, pageSize=100, url=None):
     """
 
     url = f'https://api360.yandex.net/security/v1/org/{orgID}/audit_log/disk?pageSize={pageSize}'
+    if pageToken: url += f'&pageToken={pageToken}'
+    if beforeDate: url += f'&beforeDate={beforeDate}'
+    if afterDate: url += f'&afterDate={afterDate}'
+    if includeUids: url += f'&includeUids={includeUids}'
+    if excludeUids: url += f'&excludeUids={excludeUids}'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 	
     return safe_request('get', url, headers)
 
-def mail_log(token, orgID, pageSize=100, url=None):
+def mail_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterDate=None, includeUids=None, excludeUids=None, types=None):
     """Функция возвращает список событий в аудит-логе Почте организации.
 
     :param token: :term:`Яндекс токен приложения`
@@ -61,6 +76,18 @@ def mail_log(token, orgID, pageSize=100, url=None):
     :type orgID: str
     :param pageSize: Количество событий на странице
     :type pageSize: int
+    :param pageToken: Токен постраничной навигации
+    :type pageToken: str
+    :param beforeDate: Верхняя граница периода выборки в формате ISO 8601
+    :type beforeDate: str
+    :param afterDate: Нижняя граница периода выборки в формате ISO 8601
+    :type afterDate: str
+    :param includeUids: Список пользователей, действия которых должны быть включены в список событий
+    :type includeUids: list
+    :param excludeUids: Список пользователей, действия которых должны быть исключены из списка событий
+    :type excludeUids: list
+    :param types: Типы событий которые должны быть включены в список. По умолчанию включаются все события
+    :type types: list
     :return: :numref:`результат запроса %s <Результат запроса mail_log>`
     :rtype: dict
 
@@ -102,6 +129,12 @@ def mail_log(token, orgID, pageSize=100, url=None):
     """
 
     url = f'https://api360.yandex.net/security/v1/org/{orgID}/audit_log/mail?pageSize={pageSize}'
+    if pageToken: url += f'&pageToken={pageToken}'
+    if beforeDate: url += f'&beforeDate={beforeDate}'
+    if afterDate: url += f'&afterDate={afterDate}'
+    if includeUids: url += f'&includeUids={includeUids}'
+    if excludeUids: url += f'&excludeUids={excludeUids}'
+    if types: url += f'&types={types}'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 	
     return safe_request('get', url, headers)
