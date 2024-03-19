@@ -4,7 +4,7 @@
 from jreq.jreq import safe_request
 import json
 
-def disk_log(token, orgID, pageSize=100, url):
+def disk_log(token, orgID, pageSize=100, url=None):
     """Функция возвращает список событий в аудит-логе Диска организации.
 
     :param token: :term:`Яндекс токен приложения`
@@ -52,7 +52,7 @@ def disk_log(token, orgID, pageSize=100, url):
 	
     return safe_request('get', url, headers)
 
-def mail_log(token, orgID, pageSize=100, url):
+def mail_log(token, orgID, pageSize=100, url=None):
     """Функция возвращает список событий в аудит-логе Почте организации.
 
     :param token: :term:`Яндекс токен приложения`
