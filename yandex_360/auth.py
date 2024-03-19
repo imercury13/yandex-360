@@ -81,6 +81,9 @@ def edit_domain_sessions (token, orgID, body):
 def close_domain_sessions(token, orgID, userID):
     """Функция позволяет выйти из аккаунта определенного пользователя на всех устройствах, где произведен вход.
 
+    .. danger::
+        **Данная функция удаляет все пароли приложений!**
+
     :param token: :term:`Яндекс токен приложения`
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
