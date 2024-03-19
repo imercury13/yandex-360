@@ -4,7 +4,7 @@
 from jreq.jreq import safe_request
 import json
 
-def disk_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterDate=None, includeUids=None, excludeUids=None):
+def disk_log(token, orgID, pageSize=100):
     """Функция возвращает список событий в аудит-логе Диска организации.
 
     :param token: :term:`Яндекс токен приложения`
@@ -57,12 +57,12 @@ def disk_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterD
 
     """
 
-    url = f'https://api360.yandex.net/security/v1/org/{orgID}/audit_log/disk?pageSize={pageSize}&pageToken={pageToken}&beforeDate={beforeDate}&afterDate={afterDate}&includeUids={includeUids}&excludeUids={excludeUids}'
+    url = f'https://api360.yandex.net/security/v1/org/{orgID}/audit_log/disk?pageSize={pageSize}'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 	
     return safe_request('get', url, headers)
 
-def mail_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterDate=None, includeUids=None, excludeUids=None, types=None):
+def mail_log(token, orgID, pageSize=100):
     """Функция возвращает список событий в аудит-логе Почте организации.
 
     :param token: :term:`Яндекс токен приложения`
@@ -123,7 +123,7 @@ def mail_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterD
 
     """
 
-    url = f'https://api360.yandex.net/security/v1/org/{orgID}/audit_log/disk?pageSize={pageSize}&pageToken={pageToken}&beforeDate={beforeDate}&afterDate={afterDate}&includeUids={includeUids}&excludeUids={excludeUids}&types={types}'
+    url = f'https://api360.yandex.net/security/v1/org/{orgID}/audit_log/mail?pageSize={pageSize}'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 	
     return safe_request('get', url, headers)

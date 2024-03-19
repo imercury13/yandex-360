@@ -23,7 +23,7 @@ def show_domain_sessions(token, orgID):
     :return: :numref:`результат запроса %s <Результат запроса show_domain_sessions>`
     :rtype: dict
 
-    .. code-block:: python
+    .. code-block:: pythony
         :caption: Результат запроса show_domain_sessions
         :name: Результат запроса show_domain_sessions
 
@@ -94,7 +94,7 @@ def close_domain_sessions(token, orgID, userID):
 
     """
 
-    url = f'https://api360.yandex.net/security/v1/org/{orgID}/domain_sessions/users/{userID}/'
+    url = f'https://api360.yandex.net/security/v1/org/{orgID}/domain_sessions/users/{userID}/logout'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 	
     return safe_request('put', url, headers)
