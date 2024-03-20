@@ -185,8 +185,8 @@ def edit_dns (token, orgID, domain, recordID, body):
         }
 
     .. code-block:: python
-        :caption: Результат запроса add_dns
-        :name: Результат запроса add_dns
+        :caption: Результат запроса edit_dns
+        :name: Результат запроса edit_dns
 
         {
             "address": str,
