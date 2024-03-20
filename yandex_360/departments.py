@@ -147,21 +147,56 @@ def show_department(token, orgID, depID):
 
     return safe_request('get', url, headers)
 
-def show_departments(token, orgID, url=None):
+def show_departments(token, orgID, page=1, perPage=10, parentId=None, orderBy='id'):
     """Функция возвращает список подразделений с постраничной навигацией
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param url: :term:`Ключи разбивки на страницы`
-    :type url: str or None
-    :return: результат запроса
+    :param page: Номер страницы ответа. Значение по умолчанию — 1
+    :type page: int
+    :param perPage: Количество подраздлений на одной странице ответа. Значение по умолчанию — 10
+    :type perPage: int
+    :param parentId: Идентификатор родительского подразделения. Если не указан, то выводятся все подразделения организации
+    :type parentId: str
+    :param orderBy: Вид сортировки. Возможные значения: 'id' или 'name'
+    :type orderBy: str
+    :return: :numref:`результат запроса %s <Результат запроса show_departments>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_departments
+        :name: Результат запроса show_departments
+
+        {
+            "departments": [
+                {
+                    "aliases": [
+                        str
+                    ],
+                    "createdAt": str,
+                    "description": str,
+                    "email": str,
+                    "externalId": str,
+                    "headId": str,
+                    "id": int,
+                    "label": str,
+                    "membersCount": int,
+                    "name": str,
+                    "parentId": int
+                }
+            ],
+            "page": int,
+            "pages": int,
+            "perPage": int,
+            "total": int
+        }
 
     """
 
-    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/departments/?{url}'
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/departments/?page={page}&perPage={perPage}&orderBy={orderBy}'
+    if parentId: url += f'&parentId={parentId}'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
     return safe_request('get', url, headers)
