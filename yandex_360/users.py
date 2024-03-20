@@ -98,8 +98,55 @@ def show_user(token, orgID, userID):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса show_user>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_user
+        :name: Результат запроса show_user
+
+        {
+            "about": str,
+            "aliases": [
+                str
+            ],
+            "avatarId": str,
+            "birthday": str,
+            "contacts": [
+                {
+                    "alias": bool,
+                    "label": str,
+                    "main": bool,
+                    "synthetic": bool,
+                    "type": str,
+                    "value": str
+                }
+            ],
+            "createdAt": str,
+            "departmentId": int,
+            "displayName": str,
+            "email": str,
+            "externalId": str,
+            "gender": str,
+            "groups": [
+                int
+            ],
+            "id": str,
+            "isAdmin": bool,
+            "isDismissed": bool,
+            "isEnabled": bool,
+            "isRobot": bool,
+            "language": str,
+            "name": {
+                "first": str,
+                "last": str,
+                "middle": str
+            },
+            "nickname": str,
+            "position": str,
+            "timezone": str,
+            "updatedAt": str
+        }
 
     """
 
@@ -118,11 +165,11 @@ def update_user(token, orgID, userID, body):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param body: :numref:`Тело запроса %s <Тело запроса update_user>`
-    :type body: dict
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :return: результат запроса
+    :param body: :numref:`Тело запроса %s <Тело запроса update_user>`
+    :type body: dict
+    :return: :numref:`результат запроса %s <Результат запроса update_user>`
     :rtype: dict
 
     .. code-block:: python
@@ -157,6 +204,53 @@ def update_user(token, orgID, userID, body):
             "timezone": str
         }
 
+    .. code-block:: python
+        :caption: Результат запроса update_user
+        :name: Результат запроса update_user
+
+        {
+            "about": str,
+            "aliases": [
+                str
+            ],
+            "avatarId": str,
+            "birthday": str,
+            "contacts": [
+                {
+                    "alias": bool,
+                    "label": str,
+                    "main": bool,
+                    "synthetic": bool,
+                    "type": str,
+                    "value": str
+                }
+            ],
+            "createdAt": str,
+            "departmentId": int,
+            "displayName": str,
+            "email": str,
+            "externalId": str,
+            "gender": str,
+            "groups": [
+                int
+            ],
+            "id": str,
+            "isAdmin": bool,
+            "isDismissed": bool,
+            "isEnabled": bool,
+            "isRobot": bool,
+            "language": str,
+            "name": {
+                "first": str,
+                "last": str,
+                "middle": str
+            },
+            "nickname": str,
+            "position": str,
+            "timezone": str,
+            "updatedAt": str
+        }
+
     """
 
     url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/{userID}'
@@ -171,10 +265,91 @@ def add_user(token, orgID, body):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param body: тело запроса
+    :param body: :numref:`Тело запроса %s <Тело запроса add_user>`
     :type body: dict
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса add_user>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса add_user
+        :name: Тело запроса add_user
+
+        {
+            "about": str,
+            "birthday": str,
+            "contacts": [
+                {
+                    "label": str,
+                    "type": str,
+                    "value": str
+                }
+            ],
+            "departmentId": int,
+            "displayName": str,
+            "externalId": str,
+            "gender": str,
+            "isAdmin": bool,
+            "isEnabled": bool,
+            "language": str,
+            "name": {
+                "first": str,
+                "last": str,
+                "middle": str
+            },
+            "nickname": str,
+            "password": str,
+            "passwordChangeRequired": bool,
+            "position": str,
+            "timezone": str
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса add_user
+        :name: Результат запроса add_user
+
+        {
+            "about": str,
+            "aliases": [
+                str
+            ],
+            "avatarId": str,
+            "birthday": str,
+            "contacts": [
+                {
+                    "alias": bool,
+                    "label": str,
+                    "main": bool,
+                    "synthetic": bool,
+                    "type": str,
+                    "value": str
+                }
+            ],
+            "createdAt": str,
+            "departmentId": int,
+            "displayName": str,
+            "email": str,
+            "externalId": str,
+            "gender": str,
+            "groups": [
+                int
+            ],
+            "id": str,
+            "isAdmin": bool,
+            "isDismissed": bool,
+            "isEnabled": bool,
+            "isRobot": bool,
+            "language": str,
+            "name": {
+                "first": str,
+                "last": str,
+                "middle": str
+            },
+            "nickname": str,
+            "position": str,
+            "timezone": str,
+            "updatedAt": str
+        }
+        
     """
 
     url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users'
