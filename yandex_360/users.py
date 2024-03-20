@@ -13,21 +13,78 @@
 from jreq.jreq import safe_request
 import json
 
-def show_users(token, orgID, url=None):
+def show_users(token, orgID, page=1, perPage=10):
     """Функция Возвращает список сотрудников с постраничной навигацией
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param url: :term:`Ключи разбивки на страницы`
-    :type url: str or None
-    :return: результат запроса
+    :param page: Номер страницы ответа. Значение по умолчанию — 1
+    :type page: int
+    :param perPage: Количество групп на одной странице ответа. Значение по умолчанию — 10
+    :type perPage: int
+    :return: :numref:`результат запроса %s <Результат запроса show_users>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_users
+        :name: Результат запроса show_users
+
+        {
+            "page": int,
+            "pages": int,
+            "perPage": int,
+            "total": int,
+            "users": [
+                {
+                    "about": str,
+                    "aliases": [
+                        str
+                    ],
+                    "avatarId": str,
+                    "birthday": str,
+                    "contacts": [
+                        {
+                            "alias": bool,
+                            "label": str,
+                            "main": bool,
+                            "synthetic": bool,
+                            "type": str,
+                            "value": str
+                        }
+                    ],
+                    "createdAt": str,
+                    "departmentId": int,
+                    "displayName": str,
+                    "email": str,
+                    "externalId": str,
+                    "gender": str,
+                    "groups": [
+                        int
+                    ],
+                    "id": str,
+                    "isAdmin": bool,
+                    "isDismissed": bool,
+                    "isEnabled": bool,
+                    "isRobot": bool,
+                    "language": str,
+                    "name": {
+                        "first": str,
+                        "last": str,
+                        "middle": str
+                    },
+                    "nickname": str,
+                    "position": str,
+                    "timezone": str,
+                    "updatedAt": str
+                }
+            ]
+        }
 
     """
 
-    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/?{url}'
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users/?page={page}&perPage={perPage}'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 	
     return safe_request('get', url, headers)
