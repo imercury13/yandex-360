@@ -35,6 +35,7 @@ def get_id_group_by_label(sstr, token, orgID):
             for group in grps['groups']:
                 if group['label'] == sstr:
                     return {'id':group['id']}
+            grps = groups.show_groups(token, orgID, page=grps['page']+1)
     else:
         return grps
 
