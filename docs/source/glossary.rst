@@ -63,46 +63,6 @@
             else:
                url += 'perPage=1000'
 
-
-   Тело запроса добавления записи DNS
-      * :func:`yandex_360.dns.add_dns`
-      .. code-block:: python
-         
-         {
-            "address": str,
-            "exchange": str,
-            "flag": int,
-            "name": str,
-            "port": int,
-            "preference": int,
-            "priority": int,
-            "tag": str,
-            "target": str,
-            "text": str,
-            "ttl": int,
-            "type": str,
-            "value": str,
-            "weight": int
-         }
-
-   Тело запроса редактирования записи DNS
-      * :func:`yandex_360.dns.edit_dns`
-      .. code-block:: python
-
-         {
-            "address": str,
-            "exchange": str,
-            "name": str,
-            "port": int,
-            "preference": int,
-            "priority": int,
-            "target": str,
-            "text": str,
-            "ttl": int,
-            "type": str,
-            "weight": int
-         }
-
    Тело запроса редактирования основного адреса и подписи
       * :func:`yandex_360.mail.edit_sender_info`
       .. code-block:: python

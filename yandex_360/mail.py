@@ -23,8 +23,29 @@ def show_sender_info (token, orgID, userID):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса show_sender_info>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_sender_info
+        :name: Результат запроса show_sender_info
+
+        {
+            "defaultFrom": str,
+            "fromName": str,
+            "signPosition": str,
+            "signs": [
+                {
+                    "emails": [
+                        str
+                    ],
+                    "isDefault": bool,
+                    "lang": str,
+                    "text": str
+                }
+            ]
+        }
+
     """
 
     url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/users/{userID}/settings/sender_info'
@@ -41,10 +62,51 @@ def edit_sender_info (token, orgID, userID, body):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :param body: :term:`Тело запроса редактирования основного адреса и подписи`
+    :param body: :numref:`Тело запроса %s <Тело запроса edit_sender_info>`
     :type body: dict
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса edit_sender_info>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса edit_sender_info
+        :name: Тело запроса edit_sender_info
+
+        {
+            "defaultFrom": str,
+            "fromName": str,
+            "signPosition": str,
+            "signs": [
+                {
+                    "emails": [
+                        str
+                    ],
+                    "isDefault": bool,
+                    "lang": str,
+                    "text": str
+                }
+            ]
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса edit_sender_info
+        :name: Результат запроса edit_sender_info
+
+        {
+            "defaultFrom": str,
+            "fromName": str,
+            "signPosition": str,
+            "signs": [
+                {
+                    "emails": [
+                        str
+                    ],
+                    "isDefault": bool,
+                    "lang": str,
+                    "text": str
+                }
+            ]
+        }
+
     """
 
     url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/users/{userID}/settings/sender_info'
@@ -61,8 +123,31 @@ def show_user_rules (token, orgID, userID):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса show_user_rules>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_user_rules
+        :name: Результат запроса show_user_rules
+
+        {
+            "autoreplies": [
+                {
+                    "ruleId": integer,
+                    "ruleName": string,
+                    "text": string
+                }
+            ],
+            "forwards": [
+                {
+                    "address": string,
+                    "ruleId": integer,
+                    "ruleName": string,
+                    "withStore": boolean
+                }
+            ]
+        }
+
     """
 
     url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/users/{userID}/settings/user_rules'
@@ -83,10 +168,39 @@ def edit_user_rules (token, orgID, userID, body):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :param body: :term:`Тело запроса добавления правила автоответа или пересылки`
+    :param body: :numref:`Тело запроса %s <Тело запроса edit_user_rules>`
     :type body: dict
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса edit_user_rules>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса edit_user_rules
+        :name: Тело запроса edit_user_rules
+
+        {
+            "autoreplies": [
+                {
+                    "ruleName": string,
+                    "text": string
+                }
+            ],
+            "forwards": [
+                {
+                    "address": string,
+                    "ruleName": string,
+                    "withStore": boolean
+                }
+            ]
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса edit_user_rules
+        :name: Результат запроса edit_user_rules
+
+        {
+            "ruleId": int 
+        }
+
     """
 
     url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/users/{userID}/settings/user_rules'
@@ -108,8 +222,9 @@ def delete_user_rules (token, orgID, userID, ruleID):
     :type userID: str
     :param ruleID: :term:`ID правила`
     :type ruleID: int
-    :return: результат запроса
+    :return: результат запроса: {}
     :rtype: dict
+
     """
 
     url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/users/{userID}/settings/user_rules/{ruleID}'
@@ -126,8 +241,17 @@ def show_address_book (token, orgID, userID):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса show_address_book>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_address_book
+        :name: Результат запроса show_address_book
+
+        {
+            "collectAddresses": bool 
+        }
+
     """
 
     url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/users/{userID}/settings/address_book'
@@ -144,10 +268,27 @@ def edit_address_book (token, orgID, userID, body):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :param body: :term:`Тело запроса автоматического сбора контактов`
+    :param body: :numref:`Тело запроса %s <Тело запроса edit_address_book>`
     :type body: dict
-    :return: результат запроса
+    :return::numref:`результат запроса %s <Результат запроса edit_address_book>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса edit_address_book
+        :name: Тело запроса edit_address_book
+
+        {
+            "collectAddresses": bool 
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса edit_address_book
+        :name: Результат запроса edit_address_book
+
+        {
+            "collectAddresses": bool 
+        }
+
     """
 
     url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/users/{userID}/settings/address_book'
