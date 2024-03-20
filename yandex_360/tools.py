@@ -30,7 +30,7 @@ def get_id_group_by_label(sstr, token, orgID):
     """
 
     grps = groups.show_groups(token, orgID)
-    if check_request(groups):
+    if check_request(grps):
         while grps['page'] <= grps['pages']:
             for group in grps['groups']:
                 if group['label'] == sstr:
@@ -54,7 +54,7 @@ def get_id_department_by_label(sstr, token, orgID):
 
     dep = departments.show_departments(token, orgID)
 
-    if check_request(departments):
+    if check_request(dep):
         while dep['page'] <= dep['pages']:
             for department in dep['departments']:
                 if department['label'] == sstr:
