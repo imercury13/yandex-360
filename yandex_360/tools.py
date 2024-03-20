@@ -1,7 +1,7 @@
 """Модуль вспомогательных функций"""
 
-from . import ya360
 from . import users
+from . import groups
 from . import departments
 
 def check_request(req):
@@ -24,19 +24,19 @@ def get_id_group_by_label(sstr, token, orgID):
     :type orgID: str
     :param sstr: строка поиска
     :type sstr: str
-    :return: ID группы
+    :return: ID группы: {'id': str}
     :rtype: dict
 
     """
 
-    url = 'perPage=1000'
-    groups = ya360.show_groups(token, orgID, url)
+    grps = groups.show_groups(token, orgID)
     if check_request(groups):
-        for group in groups['groups']:
-            if group['label'] == sstr:
-                return {'id':group['id']}
+        while grps['page'] <= grps['pages']:
+            for group in grps['groups']:
+                if group['label'] == sstr:
+                    return {'id':group['id']}
     else:
-        return groups
+        return grps
 
 def get_id_department_by_label(sstr, token, orgID):
     """Функция преобразования label подразделения в id
@@ -47,7 +47,7 @@ def get_id_department_by_label(sstr, token, orgID):
     :type orgID: str
     :param sstr: строка поиска
     :type sstr: str
-    :return: ID подразделения
+    :return: ID подразделения: {'id': str}
     :rtype: dict
 
     """
