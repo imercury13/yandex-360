@@ -22,7 +22,7 @@ def show_users(token, orgID, page=1, perPage=10):
     :type orgID: str
     :param page: Номер страницы ответа. Значение по умолчанию — 1
     :type page: int
-    :param perPage: Количество групп на одной странице ответа. Значение по умолчанию — 10
+    :param perPage: Количество пользователей на одной странице ответа. Значение по умолчанию — 10
     :type perPage: int
     :return: :numref:`результат запроса %s <Результат запроса show_users>`
     :rtype: dict
