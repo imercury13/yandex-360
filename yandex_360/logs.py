@@ -20,9 +20,9 @@ def disk_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterD
     :param afterDate: Нижняя граница периода выборки в формате ISO 8601
     :type afterDate: str
     :param includeUids: Список пользователей, действия которых должны быть включены в список событий
-    :type includeUids: list
+    :type includeUids: str
     :param excludeUids: Список пользователей, действия которых должны быть исключены из списка событий
-    :type excludeUids: list
+    :type excludeUids: str
     :return: :numref:`результат запроса %s <Результат запроса disk_log>`
     :rtype: dict
 
@@ -83,11 +83,11 @@ def mail_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterD
     :param afterDate: Нижняя граница периода выборки в формате ISO 8601
     :type afterDate: str
     :param includeUids: Список пользователей, действия которых должны быть включены в список событий
-    :type includeUids: list
+    :type includeUids: str
     :param excludeUids: Список пользователей, действия которых должны быть исключены из списка событий
-    :type excludeUids: list
+    :type excludeUids: str
     :param types: Типы событий которые должны быть включены в список. По умолчанию включаются все события
-    :type types: list
+    :type types: str
     :return: :numref:`результат запроса %s <Результат запроса mail_log>`
     :rtype: dict
 
