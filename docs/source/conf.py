@@ -13,8 +13,8 @@ sys.path.insert(0, os.path.abspath('../..'))
 master_doc = 'index'
 
 project = 'Yandex 360 Lib'
-copyright = '2024, Igor Kuptsov'
-author = 'Igor Kuptsov'
+copyright = '2024, Купцов Игорь Валерьевич'
+author = 'Купцов Игорь Валерьевич'
 
 html_extra_path = ['_static/robots.txt']
 html_baseurl = 'https://yandex-360.readthedocs.io/'
@@ -38,3 +38,4 @@ language = 'ru'
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+numfig = True

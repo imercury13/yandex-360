@@ -1,6 +1,6 @@
-"""Библиотека Yandex 360
+"""Библиотека Yandex 360 API
 
-.. moduleauthor:: Igor Kuptsov <ya360@uh.net.ru>
+.. moduleauthor:: Купцов Игорь Валерьевич <ya360@uh.net.ru>
 
 """
 
@@ -9,4 +9,4 @@ try:
 except:
     __version__ = 'dev'
 
-__author__ = 'Igor Kuptsov'
+__author__ = 'Купцов Игорь Валерьевич'

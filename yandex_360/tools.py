@@ -1,6 +1,8 @@
 """Модуль вспомогательных функций"""
 
-from . import ya360
+from . import users
+from . import groups
+from . import departments
 
 def check_request(req):
     """Функция проверки ответа запроса
@@ -22,19 +24,20 @@ def get_id_group_by_label(sstr, token, orgID):
     :type orgID: str
     :param sstr: строка поиска
     :type sstr: str
-    :return: ID группы
+    :return: ID группы: {'id': int}
     :rtype: dict
 
     """
 
-    url = 'perPage=10000'
-    groups = ya360.show_groups(token, orgID, url)
-    if check_request(groups):
-        for group in groups['groups']:
-            if group['label'] == sstr:
-                return {'id':group['id']}
+    grps = groups.show_groups(token, orgID)
+    if check_request(grps):
+        while grps['page'] <= grps['pages']:
+            for group in grps['groups']:
+                if group['label'] == sstr:
+                    return {'id':group['id']}
+            grps = groups.show_groups(token, orgID, page=grps['page']+1)
     else:
-        return groups
+        return grps
 
 def get_id_department_by_label(sstr, token, orgID):
     """Функция преобразования label подразделения в id
@@ -45,19 +48,21 @@ def get_id_department_by_label(sstr, token, orgID):
     :type orgID: str
     :param sstr: строка поиска
     :type sstr: str
-    :return: ID подразделения
+    :return: ID подразделения: {'id': int}
     :rtype: dict
 
     """
 
-    url = 'perPage=1000'
-    departments = ya360.show_departments(token, orgID, url)
-    if check_request(departments):
-        for department in departments['departments']:
-            if department['label'] == sstr:
-                return {'id':department['id']}
+    dep = departments.show_departments(token, orgID)
+
+    if check_request(dep):
+        while dep['page'] <= dep['pages']:
+            for department in dep['departments']:
+                if department['label'] == sstr:
+                    return {'id':department['id']}
+            dep = departments.show_departments(token, orgID, page=dep['page']+1)
     else:
-        return departments
+        return dep
 
 def get_id_user_by_nickname(sstr, token, orgID):
     """Функция преобразования nickname пользователя в id
@@ -68,16 +73,18 @@ def get_id_user_by_nickname(sstr, token, orgID):
     :type orgID: str
     :param sstr: строка поиска
     :type sstr: str
-    :return: ID пользователя
+    :return: ID пользователя {'id': str}
     :rtype: dict
 
     """
+     
+    usrs = users.show_users(token, orgID)
 
-    url = 'perPage=10000'
-    users = ya360.show_users(token, orgID, url)
-    if check_request(users):
-        for user in users['users']:
-            if user['nickname'] == sstr:
-                return {'id':user['id']}
+    if check_request(usrs):
+        while usrs['page'] <= usrs['pages']:
+            for user in usrs['users']:
+                if user['nickname'] == sstr:
+                    return {'id':user['id']}
+            usrs = users.show_users(token, orgID, page=usrs['page']+1)
     else:
-        return users
+        return usrs

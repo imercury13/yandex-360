@@ -19,7 +19,7 @@ dependencies = [
     "jreq >= 1.1.0",
 ]
 authors = [
-    {name = "Igor Kuptsov", email = "ya360@uh.net.ru"},
+    {name = "Купцов Игорь", email = "ya360@uh.net.ru"},
 ]
 dynamic = ["version"]
 
