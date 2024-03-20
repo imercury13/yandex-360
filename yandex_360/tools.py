@@ -74,12 +74,14 @@ def get_id_user_by_nickname(sstr, token, orgID):
     :rtype: dict
 
     """
-    
-    usrs = users.show_users(token, orgID, 'perPage=1000')
-    
+     
+    usrs = users.show_users(token, orgID)
+
     if check_request(usrs):
-        for user in usrs['users']:
-            if user['nickname'] == sstr:
-                return {'id':user['id']}
+        while usrs['page'] <= usrs['pages']:
+            for user in usrs['users']:
+                if user['nickname'] == sstr:
+                    return {'id':user['id']}
+            usrs = users.show_users(token, orgID, page=usrs['page']+1)
     else:
         return usrs
