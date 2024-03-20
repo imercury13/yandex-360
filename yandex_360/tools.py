@@ -52,12 +52,14 @@ def get_id_department_by_label(sstr, token, orgID):
 
     """
 
-    url = 'perPage=1000'
-    dep = departments.show_departments(token, orgID, url)
+    dep = departments.show_departments(token, orgID)
+
     if check_request(departments):
-        for department in dep['departments']:
-            if department['label'] == sstr:
-                return {'id':department['id']}
+        while dep['page'] <= dep['pages']:
+            for department in dep['departments']:
+                if department['label'] == sstr:
+                    return {'id':department['id']}
+            dep = departments.show_departments(token, orgID, page=dep['page']+1)
     else:
         return dep
 
@@ -70,7 +72,7 @@ def get_id_user_by_nickname(sstr, token, orgID):
     :type orgID: str
     :param sstr: строка поиска
     :type sstr: str
-    :return: ID пользователя
+    :return: ID пользователя {'id': str}
     :rtype: dict
 
     """
