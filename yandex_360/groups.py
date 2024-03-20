@@ -187,21 +187,64 @@ def show_members_group(token, orgID, groupID):
     
     return safe_request('get', url, headers)
 
-def show_groups(token, orgID, url=None):
+def show_groups(token, orgID, page=1,perPage=10):
     """Функция возвращает список групп с постраничной навигацией
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param url: :term:`Ключи разбивки на страницы`
-    :type url: str or None
-    :return: результат запроса
+    :param page: Номер страницы ответа. Значение по умолчанию — 1
+    :type page: int
+    :param pageToken: Количество групп на одной странице ответа. Значение по умолчанию — 10
+    :type pageToken: int
+    :return: :numref:`результат запроса %s <Результат запроса show_groups>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_groups
+        :name: Результат запроса show_groups
+
+        {
+            "groups": [
+                {
+                    "adminIds": [
+                        str
+                    ],
+                    "aliases": [
+                        str
+                    ],
+                    "authorId": str,
+                    "createdAt": str,
+                    "description": str,
+                    "email": str,
+                    "externalId": str,
+                    "id": int,
+                    "label": str,
+                    "memberOf": [
+                        int
+                    ],
+                    "members": [
+                        {
+                            "id": str,
+                            "type": str
+                        }
+                    ],
+                    "membersCount": int,
+                    "name": str,
+                    "removed": boolean,
+                    "type": str
+                }
+            ],
+            "page": int,
+            "pages": int,
+            "perPage": int,
+            "total": int
+        }
 
     """
 
-    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/groups/?{url}'
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/groups/?page={page}&perPage={perPage}'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 	
     return safe_request('get', url, headers)
