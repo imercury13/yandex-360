@@ -96,10 +96,52 @@ def add_dns (token, orgID, domain, body):
     :type orgID: str
     :param domain: :term:`Полное доменное имя`
     :type domain: str
-    :param body: :term:`Тело запроса добавления записи DNS`
+    :param body: :numref:`тело запроса %s <Тело запроса add_dns>`
     :type body: dict
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса add_dns>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса add_dns
+        :name: Тело запроса add_dns
+
+        {
+            "address": str,
+            "exchange": str,
+            "flag": int,
+            "name": str,
+            "port": int,
+            "preference": int,
+            "priority": int,
+            "tag": str,
+            "target": str,
+            "text": str,
+            "ttl": int,
+            "type": str,
+            "value": str,
+            "weight": int
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса add_dns
+        :name: Результат запроса add_dns
+
+        {
+            "address": str,
+            "exchange": str,
+            "flag": int,
+            "name": str,
+            "port": int,
+            "preference": int,
+            "priority": int,
+            "tag": str,
+            "target": str,
+            "text": str,
+            "ttl": int,
+            "type": str,
+            "value": str,
+            "weight": int
+        }
 
     """
 
