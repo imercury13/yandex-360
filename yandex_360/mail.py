@@ -270,7 +270,7 @@ def edit_address_book (token, orgID, userID, body):
     :type userID: str
     :param body: :numref:`Тело запроса %s <Тело запроса edit_address_book>`
     :type body: dict
-    :return::numref:`результат запроса %s <Результат запроса edit_address_book>`
+    :return: :numref:`результат запроса %s <Результат запроса edit_address_book>`
     :rtype: dict
 
     .. code-block:: python

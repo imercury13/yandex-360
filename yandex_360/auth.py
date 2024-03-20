@@ -23,7 +23,7 @@ def show_domain_sessions(token, orgID):
     :return: :numref:`результат запроса %s <Результат запроса show_domain_sessions>`
     :rtype: dict
 
-    .. code-block:: pythony
+    .. code-block:: python
         :caption: Результат запроса show_domain_sessions
         :name: Результат запроса show_domain_sessions
 
@@ -90,7 +90,7 @@ def close_domain_sessions(token, orgID, userID):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :return: результат запроса
+    :return: результат запроса: {}
     :rtype: dict
 
 

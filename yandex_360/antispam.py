@@ -1,4 +1,13 @@
-"""Модуль функций antispam (26.02.2024)"""
+"""Модуль для работы с настройками антиспама.
+
+.. note::
+    **Разрешения на использование сервиса, которые доступны при настройке приложения:**
+
+    **ya360_admin:mail_read_antispam_settings** — чтение настроек антиспама;
+    **ya360_admin:mail_write_antispam_settings** — управление настройками антиспама (чтение и запись).
+
+
+"""
 
 from jreq.jreq import safe_request
 import json
@@ -10,8 +19,18 @@ def show_whitelist(token, orgID):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса show_whitelist>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_whitelist
+        :name: Результат запроса show_whitelist
+
+        {
+            "allowList": [
+                str
+            ]
+        }
 
     '''
 
@@ -28,10 +47,20 @@ def create_whitelist(token, orgID, body):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param body: тело запроса
+    :param body: :numref:`тело запроса %s <Тело запроса create_whitelist>`
     :type body: dict
-    :return: результат запроса
+    :return: результат запроса: {}
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса create_whitelist
+        :name: Тело запроса create_whitelist
+
+        {
+            "allowList": [
+                str
+            ]
+        }
 
     '''
 
@@ -48,7 +77,7 @@ def delete_whitelist(token, orgID):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :return: результат запроса
+    :return: результат запроса: {}
     :rtype: dict
 
     '''
