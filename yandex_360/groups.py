@@ -22,10 +22,63 @@ def add_group(token, orgID, body):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param body: тело запроса
+    :param body: :numref:`Тело запроса %s <Тело запроса add_group>`
     :type body: dict
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса add_group>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса add_group
+        :name: Тело запроса add_group
+
+        {
+            "adminIds": [
+                str
+            ],
+            "description": str,
+            "externalId": str,
+            "label": str,
+            "members": [
+                {
+                    "id": str,
+                    "type": str
+                }
+            ],
+            "name": str
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса add_group
+        :name: Результат запроса add_group
+
+        {
+            "adminIds": [
+                str
+            ],
+            "aliases": [
+                str
+            ],
+            "authorId": str,
+            "createdAt": str,
+            "description": str,
+            "email": str,
+            "externalId": str,
+            "id": int,
+            "label": str,
+            "memberOf": [
+                int
+            ],
+            "members": [
+                {
+                    "id": str,
+                    "type": str
+                }
+            ],
+            "membersCount": int,
+            "name": str,
+            "removed": bool,
+            "type": str
+        }
 
     """
 
@@ -44,12 +97,65 @@ def update_group(token, orgID, groupID, body):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param body: тело запроса
-    :type body: dict
     :param ID: ID группы
     :type ID: str
-    :return: результат запроса
+    :param body: :numref:`Тело запроса %s <Тело запроса update_group>`
+    :type body: dict
+    :return: :numref:`результат запроса %s <Результат запроса update_group>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса update_group
+        :name: Тело запроса update_group
+
+        {
+            "adminIds": [
+                str
+            ],
+            "description": str,
+            "externalId": str,
+            "label": str,
+            "members": [
+                {
+                    "id": str,
+                    "type": str
+                }
+            ],
+            "name": str
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса update_group
+        :name: Результат запроса update_group
+
+        {
+            "adminIds": [
+                str
+            ],
+            "aliases": [
+                str
+            ],
+            "authorId": str,
+            "createdAt": str,
+            "description": str,
+            "email": str,
+            "externalId": str,
+            "id": int,
+            "label": str,
+            "memberOf": [
+                int
+            ],
+            "members": [
+                {
+                    "id": str,
+                    "type": str
+                }
+            ],
+            "membersCount": int,
+            "name": str,
+            "removed": bool,
+            "type": str
+        }
 
 	"""
 
@@ -73,8 +179,17 @@ def delete_group(token, orgID, groupID):
     :type orgID: str
     :param ID: ID группы
     :type ID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса delete_group>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса delete_group
+        :name: Результат запроса delete_group
+
+        {
+            "id": int,
+            "removed": bool
+        }
 
     """
 
@@ -93,12 +208,31 @@ def add_member_group(token, orgID, groupID, body):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param body: тело запроса
-    :type body: dict
     :param ID: ID группы
     :type ID: str
-    :return: результат запроса
+    :param body: :numref:`Тело запроса %s <Тело запроса add_member_group>`
+    :type body: dict
+    :return: :numref:`результат запроса %s <Результат запроса add_member_group>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса add_member_group
+        :name: Тело запроса add_member_group
+
+        {
+            "id": str,
+            "type": str
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса add_member_group
+        :name: Результат запроса add_member_group
+
+        {
+            "added": bool,
+            "id": str,
+            "type": str
+        }
 
     """
 
@@ -120,8 +254,18 @@ def delete_member_group(token, orgID, groupID, memberType, memberID):
     :type userTupe: str
     :param userID: ID участника
     :type userID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса delete_member_group>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса delete_member_group
+        :name: Результат запроса delete_member_group
+
+        {
+            "deleted": bool,
+            "id": str,
+            "type": str
+        }
 
     """
 
@@ -139,8 +283,45 @@ def delete_all_members_group(token, orgID, groupID):
     :type orgID: str
     :param ID: ID группы
     :type ID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса delete_all_members_group>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса delete_all_members_group
+        :name: Результат запроса delete_all_members_group
+
+        {
+            "departments": [
+                {
+                    "id": int,
+                    "membersCount": int,
+                    "name": str
+                }
+            ],
+            "groups": [
+                {
+                    "id": int,
+                    "membersCount": int,
+                    "name": str
+                }
+            ],
+            "users": [
+                {
+                    "avatarId": str,
+                    "departmentId": int,
+                    "email": str,
+                    "gender": str,
+                    "id": str,
+                    "name": {
+                        "first": str,
+                        "last": str,
+                        "middle": str
+                    },
+                    "nickname": str,
+                    "position": str
+                }
+            ]
+        }
 
     """
 
@@ -158,8 +339,41 @@ def show_group(token, orgID, groupID):
     :type orgID: str
     :param ID: ID группы
     :type ID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса show_group>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_group
+        :name: Результат запроса show_group
+
+        {
+            "adminIds": [
+                str
+            ],
+            "aliases": [
+                str
+            ],
+            "authorId": str,
+            "createdAt": str,
+            "description": str,
+            "email": str,
+            "externalId": str,
+            "id": int,
+            "label": str,
+            "memberOf": [
+                int
+            ],
+            "members": [
+                {
+                    "id": str,
+                    "type": str
+                }
+            ],
+            "membersCount": int,
+            "name": str,
+            "removed": bool,
+            "type": str
+        }
 
     """
 
@@ -177,8 +391,45 @@ def show_members_group(token, orgID, groupID):
     :type orgID: str
     :param ID: ID группы
     :type ID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса show_members_group>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_members_group
+        :name: Результат запроса show_members_group
+
+        {
+            "departments": [
+                {
+                    "id": int,
+                    "membersCount": int,
+                    "name": str
+                }
+            ],
+            "groups": [
+                {
+                    "id": int,
+                    "membersCount": int,
+                    "name": str
+                }
+            ],
+            "users": [
+                {
+                    "avatarId": str,
+                    "departmentId": int,
+                    "email": str,
+                    "gender": str,
+                    "id": str,
+                    "name": {
+                        "first": str,
+                        "last": str,
+                        "middle": str
+                    },
+                    "nickname": str,
+                    "position": str
+                }
+            ]
+        }
 
     """
 
@@ -232,7 +483,7 @@ def show_groups(token, orgID, page=1,perPage=10):
                     ],
                     "membersCount": int,
                     "name": str,
-                    "removed": boolean,
+                    "removed": bool,
                     "type": str
                 }
             ],
@@ -259,12 +510,55 @@ def update_admin_group(token, orgID, groupID, body):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param body: тело запроса
-    :type body: dict
     :param ID: ID группы
     :type ID: str
-    :return: результат запроса
+    :param body: :numref:`Тело запроса %s <Тело запроса update_admin_group>`
+    :type body: dict
+    :return: :numref:`результат запроса %s <Результат запроса update_admin_group>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса update_admin_group
+        :name: Тело запроса update_admin_group
+
+        {
+            "adminIds": [
+                "str"
+            ]
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса update_admin_group
+        :name: Результат запроса update_admin_group
+
+        {
+            "adminIds": [
+                str
+            ],
+            "aliases": [
+                str
+            ],
+            "authorId": str,
+            "createdAt": str,
+            "description": str,
+            "email": str,
+            "externalId": str,
+            "id": int,
+            "label": str,
+            "memberOf": [
+                int
+            ],
+            "members": [
+                {
+                    "id": str,
+                    "type": str
+                }
+            ],
+            "membersCount": int,
+            "name": str,
+            "removed": bool,
+            "type": str
+        }
 
 	"""
 
@@ -284,8 +578,41 @@ def delete_admins_group(token, orgID, groupID):
     :type body: dict
     :param ID: ID группы
     :type ID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса delete_admins_group>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса delete_admins_group
+        :name: Результат запроса delete_admins_group
+
+        {
+            "adminIds": [
+                str
+            ],
+            "aliases": [
+                str
+            ],
+            "authorId": str,
+            "createdAt": str,
+            "description": str,
+            "email": str,
+            "externalId": str,
+            "id": int,
+            "label": str,
+            "memberOf": [
+                int
+            ],
+            "members": [
+                {
+                    "id": str,
+                    "type": str
+                }
+            ],
+            "membersCount": int,
+            "name": str,
+            "removed": bool,
+            "type": str
+        }
 
 	"""
 
