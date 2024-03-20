@@ -19,10 +19,43 @@ def add_department(token, orgID, body):
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :param body: тело запроса
+    :param body: :numref:`Тело запроса %s <Тело запроса add_department>`
     :type body: dict
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса add_department>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса add_department
+        :name: Тело запроса add_department
+
+        {
+            "description": str,
+            "externalId": str,
+            "headId": str,
+            "label": str,
+            "name": str,
+            "parentId": int
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса add_department
+        :name: Результат запроса add_department
+
+        {
+            "aliases": [
+                str
+            ],
+            "createdAt": str,
+            "description": str,
+            "email": str,
+            "externalId": str,
+            "headId": str,
+            "id": integer,
+            "label": str,
+            "membersCount": int,
+            "name": str,
+            "parentId": int
+        }
 
     """
 
@@ -43,10 +76,43 @@ def update_department(token, orgID, depID, body):
     :type orgID: str
     :param depID: :term:`ID подразделения в Яндекс 360`
     :type depID: str
-    :param body: тело запроса
+    :param body: :numref:`Тело запроса %s <Тело запроса update_department>`
     :type body: dict
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса update_department>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса update_department
+        :name: Тело запроса update_department
+
+        {
+            "description": str,
+            "externalId": str,
+            "headId": str,
+            "label": str,
+            "name": str,
+            "parentId": int
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса update_department
+        :name: Результат запроса update_department
+
+        {
+            "aliases": [
+                str
+            ],
+            "createdAt": str,
+            "description": str,
+            "email": str,
+            "externalId": str,
+            "headId": str,
+            "id": integer,
+            "label": str,
+            "membersCount": int,
+            "name": str,
+            "parentId": int
+        }
 
     """
 
@@ -70,8 +136,17 @@ def delete_department(token, orgID, depID):
     :type orgID: str
     :param depID: :term:`ID подразделения в Яндекс 360`
     :type depID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса delete_department>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса delete_department
+        :name: Результат запроса delete_department
+
+        {
+            "id": int,
+            "removed": bool
+        }
 
     """
 
@@ -92,10 +167,38 @@ def add_alias_department(token, orgID, depID, body):
     :type orgID: str
     :param depID: :term:`ID подразделения в Яндекс 360`
     :type depID: str
-    :param body: тело запроса
+    :param body: :numref:`Тело запроса %s <Тело запроса add_alias_department>`
     :type body: dict
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса add_alias_department>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса add_alias_department
+        :name: Тело запроса add_alias_department
+
+        {
+            "alias": str
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса add_alias_department
+        :name: Результат запроса add_alias_department
+
+        {
+            "aliases": [
+                str
+            ],
+            "createdAt": str,
+            "description": str,
+            "email": str,
+            "externalId": str,
+            "headId": str,
+            "id": integer,
+            "label": str,
+            "membersCount": int,
+            "name": str,
+            "parentId": int
+        }
 
     """
 
@@ -118,8 +221,17 @@ def delete_alias_department(token, orgID, depID, alias):
     :type depID: str
     :param alias: альяс
     :type alias: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса delete_alias_department>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса delete_alias_department
+        :name: Результат запроса delete_alias_department
+
+        {
+            "alias": str,
+            "removed": bool
+        }
 
     """
 
@@ -137,8 +249,28 @@ def show_department(token, orgID, depID):
     :type orgID: str
     :param depID: :term:`ID подразделения в Яндекс 360`
     :type depID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса show_department>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_department
+        :name: Результат запроса show_department
+
+        {
+            "aliases": [
+                str
+            ],
+            "createdAt": str,
+            "description": str,
+            "email": str,
+            "externalId": str,
+            "headId": str,
+            "id": integer,
+            "label": str,
+            "membersCount": int,
+            "name": str,
+            "parentId": int
+        }
 
     """
 
