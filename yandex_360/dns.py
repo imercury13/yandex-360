@@ -161,10 +161,49 @@ def edit_dns (token, orgID, domain, recordID, body):
     :type domain: str
     :param recordID: :term:`ID записи`
     :type recordID: int
-    :param body: :term:`Тело запроса редактирования записи DNS`
+    :param body: :numref:`тело запроса %s <Тело запроса edit_dns>`
     :type body: dict
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса edit_dns>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса edit_dns
+        :name: Тело запроса edit_dns
+
+        {
+            "address": str,
+            "exchange": str,
+            "name": str,
+            "port": int,
+            "preference": int,
+            "priority": int,
+            "target": str,
+            "text": str,
+            "ttl": int,
+            "type": str,
+            "weight": int
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса add_dns
+        :name: Результат запроса add_dns
+
+        {
+            "address": str,
+            "exchange": str,
+            "flag": int,
+            "name": str,
+            "port": int,
+            "preference": int,
+            "priority": int,
+            "tag": str,
+            "target": str,
+            "text": str,
+            "ttl": int,
+            "type": str,
+            "value": str,
+            "weight": int
+        }
  
     """
 
