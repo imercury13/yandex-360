@@ -11,7 +11,7 @@
 from jreq.jreq import safe_request
 import json
 
-def show_dns (token, orgID, domain, url=None):
+def show_dns (token, orgID, domain, page=1, perPage=50):
     """Функция позволяет получить все DNS-записи, которые были установлены для домена
 
     :param token: :term:`Яндекс токен приложения`
@@ -20,13 +20,46 @@ def show_dns (token, orgID, domain, url=None):
     :type orgID: str
     :param domain: :term:`Полное доменное имя`
     :type domain: str
-    :param url: :term:`Ключи разбивки на страницы`
-    :type url: str or None
-    :return: результат запроса
+    :param page: Номер страницы ответа. Значение по умолчанию — 1
+    :type page: int
+    :param perPage: Количество групп на одной странице ответа. Значение по умолчанию — 50
+    :type perPage: int
+    :return: :numref:`результат запроса %s <Результат запроса show_dns>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_dns
+        :name: Результат запроса show_dns
+
+        {
+            "page": int,
+            "pages": int,
+            "perPage": int,
+            "records": [
+                {
+                    "address": str,
+                    "exchange": str,
+                    "flag": int,
+                    "name": str,
+                    "port": int,
+                    "preference": int,
+                    "priority": int,
+                    "recordId": int,
+                    "tag": str,
+                    "target": str,
+                    "text": str,
+                    "ttl": int,
+                    "type": str,
+                    "value": str,
+                    "weight": int
+                }
+            ],
+            "total": int
+        }
+
     """
 
-    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains/{domain}/dns?{url}'
+    url = f'https://api360.yandex.net/directory/v1/org/{orgID}/domains/{domain}/dns?page={page}&perPage={perPage}'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
     return safe_request('get',url, headers)
