@@ -349,7 +349,7 @@ def add_user(token, orgID, body):
             "timezone": str,
             "updatedAt": str
         }
-        
+
     """
 
     url = f'https://api360.yandex.net/directory/v1/org/{orgID}/users'
@@ -390,10 +390,65 @@ def add_alias_user(token, orgID, userID, body):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :param body: тело запроса
+    :param body: :numref:`Тело запроса %s <Тело запроса add_alias_user>`
     :type body: dict
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса add_alias_user>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса add_alias_user
+        :name: Тело запроса add_alias_user
+
+        {
+            "alias": str,
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса add_alias_user
+        :name: Результат запроса add_alias_user
+
+        {
+            "about": str,
+            "aliases": [
+                str
+            ],
+            "avatarId": str,
+            "birthday": str,
+            "contacts": [
+                {
+                    "alias": bool,
+                    "label": str,
+                    "main": bool,
+                    "synthetic": bool,
+                    "type": str,
+                    "value": str
+                }
+            ],
+            "createdAt": str,
+            "departmentId": int,
+            "displayName": str,
+            "email": str,
+            "externalId": str,
+            "gender": str,
+            "groups": [
+                int
+            ],
+            "id": str,
+            "isAdmin": bool,
+            "isDismissed": bool,
+            "isEnabled": bool,
+            "isRobot": bool,
+            "language": str,
+            "name": {
+                "first": str,
+                "last": str,
+                "middle": str
+            },
+            "nickname": str,
+            "position": str,
+            "timezone": str,
+            "updatedAt": str
+        }
 
     """
 
@@ -413,8 +468,17 @@ def delete_alias_user(token, orgID, userID, alias):
     :type userID: str
     :param alias: альяс
     :type alias: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса delete_alias_user>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса delete_alias_user
+        :name: Результат запроса delete_alias_user
+
+        {
+            "alias": str,
+            "removed": bool
+        }
 
     """
 
@@ -437,7 +501,7 @@ def update_user_contacts(token, orgID, userID, body):
     :type userID: str
     :param body: :numref:`Тело запроса %s <Тело запроса update_user_contacts>`
     :type body: dict
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса update_user_contacts>`
     :rtype: dict
 
     .. code-block:: python
@@ -452,6 +516,53 @@ def update_user_contacts(token, orgID, userID, body):
                     "value": str
                 }
             ]
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса update_user_contacts
+        :name: Результат запроса update_user_contacts
+
+        {
+            "about": str,
+            "aliases": [
+                str
+            ],
+            "avatarId": str,
+            "birthday": str,
+            "contacts": [
+                {
+                    "alias": bool,
+                    "label": str,
+                    "main": bool,
+                    "synthetic": bool,
+                    "type": str,
+                    "value": str
+                }
+            ],
+            "createdAt": str,
+            "departmentId": int,
+            "displayName": str,
+            "email": str,
+            "externalId": str,
+            "gender": str,
+            "groups": [
+                int
+            ],
+            "id": str,
+            "isAdmin": bool,
+            "isDismissed": bool,
+            "isEnabled": bool,
+            "isRobot": bool,
+            "language": str,
+            "name": {
+                "first": str,
+                "last": str,
+                "middle": str
+            },
+            "nickname": str,
+            "position": str,
+            "timezone": str,
+            "updatedAt": str
         }
 
     """
@@ -470,8 +581,55 @@ def delete_user_contacts(token, orgID, userID):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса delete_user_contacts>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса delete_user_contacts
+        :name: Результат запроса delete_user_contacts
+
+        {
+            "about": str,
+            "aliases": [
+                str
+            ],
+            "avatarId": str,
+            "birthday": str,
+            "contacts": [
+                {
+                    "alias": bool,
+                    "label": str,
+                    "main": bool,
+                    "synthetic": bool,
+                    "type": str,
+                    "value": str
+                }
+            ],
+            "createdAt": str,
+            "departmentId": int,
+            "displayName": str,
+            "email": str,
+            "externalId": str,
+            "gender": str,
+            "groups": [
+                int
+            ],
+            "id": str,
+            "isAdmin": bool,
+            "isDismissed": bool,
+            "isEnabled": bool,
+            "isRobot": bool,
+            "language": str,
+            "name": {
+                "first": str,
+                "last": str,
+                "middle": str
+            },
+            "nickname": str,
+            "position": str,
+            "timezone": str,
+            "updatedAt": str
+        }
 
     """
 
@@ -490,8 +648,17 @@ def show_user_2fa(token, orgID, userID):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса show_user_2fa>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_user_2fa
+        :name: Результат запроса show_user_2fa
+
+        {
+            "has2fa": bool,
+            "userId": str
+        }
 
     """
 
@@ -509,7 +676,7 @@ def delete_user_2fa(token, orgID, userID):
     :type orgID: str
     :param userID: :term:`ID пользователя в Яндекс 360`
     :type userID: str
-    :return: результат запроса
+    :return: результат запроса: {}
     :rtype: dict
 
     """
@@ -533,8 +700,16 @@ def upload_user_avatar(token, orgID, userID, avatar):
     :type userID: str
     :param avatar: данные картинки в binary 
     :type avatar: binary
-    :return: результат запроса
+    :return: :numref:`результат запроса %s <Результат запроса upload_user_avatar>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса upload_user_avatar
+        :name: Результат запроса upload_user_avatar
+
+        {
+            "url": str
+        }
 
     """
 
