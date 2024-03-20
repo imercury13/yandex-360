@@ -24,7 +24,7 @@ def get_id_group_by_label(sstr, token, orgID):
     :type orgID: str
     :param sstr: строка поиска
     :type sstr: str
-    :return: ID группы: {'id': str}
+    :return: ID группы: {'id': int}
     :rtype: dict
 
     """
@@ -48,7 +48,7 @@ def get_id_department_by_label(sstr, token, orgID):
     :type orgID: str
     :param sstr: строка поиска
     :type sstr: str
-    :return: ID подразделения: {'id': str}
+    :return: ID подразделения: {'id': int}
     :rtype: dict
 
     """
