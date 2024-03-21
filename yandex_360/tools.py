@@ -174,7 +174,7 @@ def get_domains(token, orgID):
     if check_request(doms):
         while doms['page'] <= doms['pages']:
             lst_dom += doms['domains']
-            usrs = domains.show_domains(token, orgID, page=doms['page']+1)
+            doms = domains.show_domains(token, orgID, page=doms['page']+1)
         return {"domains":lst_dom,"page":doms['page'],"pages":doms['pages'],"perPage":doms['perPage'],"total":doms['total']}
     else:
         return doms
