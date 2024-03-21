@@ -220,7 +220,7 @@ def get_orgs(token, orgID):
 
     orgs = org.show_orgs(token, orgID)
     if check_request(orgs):
-        while orgs['pageToken'] != '':
+        while orgs['nextPageToken'] != '':
             lst_orgs += orgs['organizations']
             orgs = org.show_orgs(token, orgID, pageToken=orgs['nextPageToken'])
         return {"organizations":lst_dnss,"nextPageToken":orgs['nextPageToken']}
