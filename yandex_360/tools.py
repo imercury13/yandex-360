@@ -1,8 +1,6 @@
 """Модуль вспомогательных функций"""
 
-from . import users
-from . import groups
-from . import departments
+from . import users, groups, departments, domains, dns
 
 def check_request(req):
     """Функция проверки ответа запроса
@@ -176,7 +174,32 @@ def get_domains(token, orgID):
     if check_request(doms):
         while doms['page'] <= doms['pages']:
             lst_dom += doms['domains']
-            usrs = domains.show_users(token, orgID, page=usrs['page']+1)
+            usrs = domains.show_domains(token, orgID, page=doms['page']+1)
         return {"domains":lst_dom,"page":doms['page'],"pages":doms['pages'],"perPage":doms['perPage'],"total":doms['total']}
     else:
         return doms
+
+def get_dns(token, orgID, domain):
+    """Функция вывода всех записей в домене
+    
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param domain: :term:`Полное доменное имя`
+    :type domain: str
+    :return: словарь всех записей в домене
+    :rtype: dict
+    
+    """
+
+    lst_dnss =[]
+
+    dnss = dns.show_dns(token, orgID, domain)
+    if check_request(dnss):
+        while dnss['page'] <= dnss['pages']:
+            lst_dnss += dnss['records']
+            dnss = dns.show_dns(token, orgID, domain, page=usrs['page']+1)
+        return {"records":lst_dnss,"page":dnss['page'],"pages":dnss['pages'],"perPage":dnss['perPage'],"total":dnss['total']}
+    else:
+        return dnss
