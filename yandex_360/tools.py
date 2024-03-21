@@ -223,6 +223,6 @@ def get_orgs(token, orgID):
         while orgs['nextPageToken'] != '':
             lst_orgs += orgs['organizations']
             orgs = org.show_orgs(token, orgID, pageToken=orgs['nextPageToken'])
-        return {"organizations":lst_dnss,"nextPageToken":orgs['nextPageToken']}
+        return {"organizations":lst_orgs,"nextPageToken":orgs['nextPageToken']}
     else:
         return orgs
