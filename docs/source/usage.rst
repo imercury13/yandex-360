@@ -10,8 +10,8 @@
 Подключение библиотеки
 ======================
 
-Библиотека является пакетом ``yandex_360`` с модулями функций ``users``, ``departments``, ``groups``, ``mail``, ``domains``, ``dns``, ``pwd``, ``auth``, ``logs``, ``2fa``, ``org``, ``tools``, ``antispam`` и ``routing``
+Библиотека является пакетом ``yandex_360`` с модулями функций ``users``, ``departments``, ``groups``, ``mail``, ``domains``, ``dns``, ``pwd``, ``auth``, ``logs``, ``a2fa``, ``org``, ``tools``, ``antispam`` и ``routing``
 
 .. code-block:: python
 
-    from yandex_360 import users, departments, groups, mail, domains, dns, pwd, auth, logs, 2fa, org,  tools, antispam, routing
+    from yandex_360 import users, departments, groups, mail, domains, dns, pwd, auth, logs, a2fa, org,  tools, antispam, routing
