@@ -35,30 +35,3 @@
          * :func:`yandex_360.dns.edit_dns`
          * :func:`yandex_360.dns.delete_dns`
          * :func:`yandex_360.dns.add_dns`
-
-   Ключи разбивки на страницы
-      Это символьная строка, содержащая два параметра в url запросе для указания номера выводимой страницы и количества записей на ней.
-      
-      Используется в функциях:
-         * :func:`yandex_360.ya360.show_users`
-         * :func:`yandex_360.ya360.show_groups`
-         * :func:`yandex_360.ya360.show_departments`
-
-         Обусловленно это тем, что данные функции возвращают большое количество данных, которые необходимо разбивать постранично.
-
-      Ключи:
-         * ``page``: номер страницы
-         * ``perPage``: количество записей на странице
-
-      Пример формирования строки `url`:
-         .. code-block:: python
-
-            url = ''
-            if args.page:
-               url += 'page='+str(args.page)+'&'
-            else:
-               url += 'page=1&'
-            if args.perPage:
-               url += 'perPage='+str(args.perPage)+'&'
-            else:
-               url += 'perPage=1000'
