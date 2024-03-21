@@ -220,9 +220,44 @@ def get_orgs(token, orgID):
 
     orgs = org.show_orgs(token, orgID)
     if check_request(orgs):
+        lst_orgs += orgs['organizations']
+        orgs = org.show_orgs(token, orgID, pageToken=orgs['nextPageToken'])
         while orgs['nextPageToken'] != '':
             lst_orgs += orgs['organizations']
             orgs = org.show_orgs(token, orgID, pageToken=orgs['nextPageToken'])
         return {"organizations":lst_orgs,"nextPageToken":orgs['nextPageToken']}
     else:
         return orgs
+
+def get_disk_log(token, orgID, beforeDate=None, afterDate=None, includeUids=None, excludeUids=None):
+    """Функция возвращает список событий в аудит-логе Диска организации.
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param beforeDate: Верхняя граница периода выборки в формате ISO 8601
+    :type beforeDate: str
+    :param afterDate: Нижняя граница периода выборки в формате ISO 8601
+    :type afterDate: str
+    :param includeUids: Список пользователей, действия которых должны быть включены в список событий
+    :type includeUids: str
+    :param excludeUids: Список пользователей, действия которых должны быть исключены из списка событий
+    :type excludeUids: str
+    :return: :numref:`результат запроса %s <Результат запроса disk_log>`
+    :rtype: dict
+
+    """
+
+    lst_disk =[]
+
+    disk = logs.disk_log(token, orgID, beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids)
+    if check_request(disk):
+        lst_disk += disk['events']
+        disk = logs.disk_log(token, orgID, pageToken=orgs['nextPageToken'], beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids)
+        while disk['nextPageToken'] != '':
+            lst_disk += disk['events']
+            disk = logs.disk_log(token, orgID, pageToken=orgs['nextPageToken'], beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids)
+        return {"events":lst_disk,"nextPageToken":orgs['nextPageToken']}
+    else:
+        return disk
