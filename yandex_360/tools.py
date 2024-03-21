@@ -130,7 +130,7 @@ def get_departments(token, orgID):
     if check_request(deps):
         while deps['page'] <= deps['pages']:
             lst_dep += deps['departments']
-            deps = departments.show_departmets(token, orgID, page=deps['page']+1)
+            deps = departments.show_departments(token, orgID, page=deps['page']+1)
         return {"departments":lst_dep,"page":deps['page'],"pages":deps['pages'],"perPage":deps['perPage'],"total":deps['total']}
     else:
         return deps
@@ -152,7 +152,7 @@ def get_users(token, orgID):
     usrs = users.show_users(token, orgID)
     if check_request(usrs):
         while usrs['page'] <= usrs['pages']:
-            lst_usr += users['users']
+            lst_usr += usrs['users']
             usrs = users.show_users(token, orgID, page=usrs['page']+1)
         return {"users":lst_usr,"page":usrs['page'],"pages":usrs['pages'],"perPage":usrs['perPage'],"total":usrs['total']}
     else:
