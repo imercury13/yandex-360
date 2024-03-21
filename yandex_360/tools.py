@@ -88,15 +88,56 @@ def get_id_user_by_nickname(sstr, token, orgID):
         return usrs
 
 def get_groups(token, orgID):
-    """Функция вывода всех групп
-    
+    """Функция возвращает список групп
+
     :param token: :term:`Яндекс токен приложения`
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :return: словарь групп
+    :return: :numref:`результат запроса %s <Результат запроса get_groups>`
     :rtype: dict
-    
+
+    .. code-block:: python
+        :caption: Результат запроса get_groups
+        :name: Результат запроса get_groups
+
+        {
+            "groups": [
+                {
+                    "adminIds": [
+                        str
+                    ],
+                    "aliases": [
+                        str
+                    ],
+                    "authorId": str,
+                    "createdAt": str,
+                    "description": str,
+                    "email": str,
+                    "externalId": str,
+                    "id": int,
+                    "label": str,
+                    "memberOf": [
+                        int
+                    ],
+                    "members": [
+                        {
+                            "id": str,
+                            "type": str
+                        }
+                    ],
+                    "membersCount": int,
+                    "name": str,
+                    "removed": bool,
+                    "type": str
+                }
+            ],
+            "page": int,
+            "pages": int,
+            "perPage": int,
+            "total": int
+        }
+
     """
 
     lst_grp =[]
@@ -111,15 +152,43 @@ def get_groups(token, orgID):
         return grps
 
 def get_departments(token, orgID):
-    """Функция вывода всех подразделений
-    
+    """Функция возвращает список подразделений
+
     :param token: :term:`Яндекс токен приложения`
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :return: словарь подразделений
+    :return: :numref:`результат запроса %s <Результат запроса get_departments>`
     :rtype: dict
-    
+
+    .. code-block:: python
+        :caption: Результат запроса get_departments
+        :name: Результат запроса get_departments
+
+        {
+            "departments": [
+                {
+                    "aliases": [
+                        str
+                    ],
+                    "createdAt": str,
+                    "description": str,
+                    "email": str,
+                    "externalId": str,
+                    "headId": str,
+                    "id": int,
+                    "label": str,
+                    "membersCount": int,
+                    "name": str,
+                    "parentId": int
+                }
+            ],
+            "page": int,
+            "pages": int,
+            "perPage": int,
+            "total": int
+        }
+
     """
 
     lst_dep =[]
@@ -134,15 +203,70 @@ def get_departments(token, orgID):
         return deps
 
 def get_users(token, orgID):
-    """Функция вывода всех пользователей
-    
+    """Функция Возвращает список сотрудников
+
     :param token: :term:`Яндекс токен приложения`
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :return: словарь пользователей
+    :return: :numref:`результат запроса %s <Результат запроса get_users>`
     :rtype: dict
-    
+
+    .. code-block:: python
+        :caption: Результат запроса get_users
+        :name: Результат запроса get_users
+
+        {
+            "page": int,
+            "pages": int,
+            "perPage": int,
+            "total": int,
+            "users": [
+                {
+                    "about": str,
+                    "aliases": [
+                        str
+                    ],
+                    "avatarId": str,
+                    "birthday": str,
+                    "contacts": [
+                        {
+                            "alias": bool,
+                            "label": str,
+                            "main": bool,
+                            "synthetic": bool,
+                            "type": str,
+                            "value": str
+                        }
+                    ],
+                    "createdAt": str,
+                    "departmentId": int,
+                    "displayName": str,
+                    "email": str,
+                    "externalId": str,
+                    "gender": str,
+                    "groups": [
+                        int
+                    ],
+                    "id": str,
+                    "isAdmin": bool,
+                    "isDismissed": bool,
+                    "isEnabled": bool,
+                    "isRobot": bool,
+                    "language": str,
+                    "name": {
+                        "first": str,
+                        "last": str,
+                        "middle": str
+                    },
+                    "nickname": str,
+                    "position": str,
+                    "timezone": str,
+                    "updatedAt": str
+                }
+            ]
+        }
+
     """
 
     lst_usr =[]
@@ -157,15 +281,57 @@ def get_users(token, orgID):
         return usrs
 
 def get_domains(token, orgID):
-    """Функция вывода всех доменов
-    
+    """Функция возвращает список доменов организации
+
     :param token: :term:`Яндекс токен приложения`
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
-    :return: словарь доменов
+    :return: :numref:`результат запроса %s <Результат запроса get_domain>`
     :rtype: dict
-    
+
+    .. code-block:: python
+        :caption: Результат запроса get_domain
+        :name: Результат запроса get_domain
+
+        {
+            "domains": [
+                {
+                    "country": str,
+                    "delegated": bool,
+                    "master": bool,
+                    "mx": bool,
+                    "name": str,
+                    "status": {
+                        "dkim": {
+                            "match": bool,
+                            "value": str
+                        },
+                        "lastAdded": str,
+                        "lastCheck": str,
+                        "mx": {
+                            "match": bool,
+                            "value": str
+                        },
+                        "name": str,
+                        "ns": {
+                            "match": bool,
+                            "value": str
+                        },
+                        "spf": {
+                            "match": bool,
+                            "value": str
+                        }
+                    },
+                    "verified": bool
+                }
+            ],
+            "page": int,
+            "pages": int,
+            "perPage": int,
+            "total": int
+        }
+
     """
 
     lst_dom =[]
@@ -180,17 +346,47 @@ def get_domains(token, orgID):
         return doms
 
 def get_dns(token, orgID, domain):
-    """Функция вывода всех записей в домене
-    
+    """Функция позволяет получить все DNS-записи, которые были установлены для домена
+
     :param token: :term:`Яндекс токен приложения`
     :type token: str
     :param orgID: :term:`ID организации в Яндекс 360`
     :type orgID: str
     :param domain: :term:`Полное доменное имя`
     :type domain: str
-    :return: словарь всех записей в домене
+    :return: :numref:`результат запроса %s <Результат запроса get_dns>`
     :rtype: dict
-    
+
+    .. code-block:: python
+        :caption: Результат запроса get_dns
+        :name: Результат запроса get_dns
+
+        {
+            "page": int,
+            "pages": int,
+            "perPage": int,
+            "records": [
+                {
+                    "address": str,
+                    "exchange": str,
+                    "flag": int,
+                    "name": str,
+                    "port": int,
+                    "preference": int,
+                    "priority": int,
+                    "recordId": int,
+                    "tag": str,
+                    "target": str,
+                    "text": str,
+                    "ttl": int,
+                    "type": str,
+                    "value": str,
+                    "weight": int
+                }
+            ],
+            "total": int
+        }
+
     """
 
     lst_dnss =[]
@@ -205,15 +401,32 @@ def get_dns(token, orgID, domain):
         return dnss
 
 def get_orgs(token, orgID):
-    """Функция вывода всех организаций
-    
+    """Функция возвращает список организаций пользователя
+
     :param token: :term:`Яндекс токен приложения`
     :type token: str
-    :param orgID: :term:`ID организации в Яндекс 360`
-    :type orgID: str
-    :return: словарь организаций
+    :return: :numref:`результат запроса %s <Результат запроса get_orgs>`
     :rtype: dict
-    
+
+    .. code-block:: python
+        :caption: Результат запроса get_orgs
+        :name: Результат запроса get_orgs
+
+        {
+            "nextPageToken": str,
+            "organizations": [
+                {
+                    "email": str,
+                    "fax": str,
+                    "id": int,
+                    "language": str,
+                    "name": str,
+                    "phone": str,
+                    "subscriptionPlan": str
+                }
+            ]
+        }
+
     """
 
     lst_orgs =[]
@@ -244,8 +457,37 @@ def get_disk_log(token, orgID, beforeDate=None, afterDate=None, includeUids=None
     :type includeUids: str
     :param excludeUids: Список пользователей, действия которых должны быть исключены из списка событий
     :type excludeUids: str
-    :return: :numref:`результат запроса %s <Результат запроса disk_log>`
+    :return: :numref:`результат запроса %s <Результат запроса get_disk_log>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса get_disk_log
+        :name: Результат запроса get_disk_log
+
+        {
+            "events": [
+                {
+                    "clientIp": str,
+                    "date": str,
+                    "eventType": str,
+                    "lastModificationDate": str,
+                    "orgId": int,
+                    "ownerLogin": str,
+                    "ownerName": str,
+                    "ownerUid": str,
+                    "path": str,
+                    "requestId": str,
+                    "resourceFileId": str,
+                    "rights": str,
+                    "size": str,
+                    "uniqId": str,
+                    "userLogin": str,
+                    "userName": str,
+                    "userUid": str
+                }
+            ],
+            "nextPageToken": str
+        }
 
     """
 
@@ -279,8 +521,43 @@ def get_mail_log(token, orgID, beforeDate=None, afterDate=None, includeUids=None
     :type excludeUids: str
     :param types: Типы событий которые должны быть включены в список. По умолчанию включаются все события
     :type types: str
-    :return: :numref:`результат запроса %s <Результат запроса mail_log>`
+    :return: :numref:`результат запроса %s <Результат запроса get_mail_log>`
     :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса get_mail_log
+        :name: Результат запроса get_mail_log
+
+        {
+            "events": [
+                {
+                    "bcc": str,
+                    "cc": str,
+                    "clientIp": str,
+                    "date": str,
+                    "destMid": str,
+                    "eventType": str,
+                    "folderName": str,
+                    "folderType": str,
+                    "from": str,
+                    "labels": [
+                        str
+                    ],
+                    "mid": str,
+                    "msgId": str,
+                    "orgId": int,
+                    "requestId": str,
+                    "source": str,
+                    "subject": str,
+                    "to": str,
+                    "uniqId": str,
+                    "userLogin": str,
+                    "userName": str,
+                    "userUid": str
+                }
+            ],
+            "nextPageToken": str
+        }
 
     """
 
