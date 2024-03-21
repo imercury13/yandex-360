@@ -108,8 +108,9 @@ def get_groups(token, orgID):
         while grps['page'] <= grps['pages']:
             lst_grp.append(grps['groups'])
             grps = groups.show_groups(token, orgID, page=grps['page']+1)
-    else:
         return {"groups":lst_grp,"page":grps['page'],"pages":grps['pages'],"perPage":grps['perPage'],"total":grps['total']}
+    else:
+        return grps
 
 def get_departments(token, orgID):
     """Функция вывода всех подразделений
@@ -130,8 +131,9 @@ def get_departments(token, orgID):
         while deps['page'] <= deps['pages']:
             lst_dep.append(deps['departments'])
             deps = departments.show_departmets(token, orgID, page=deps['page']+1)
-    else:
         return {"groups":lst_dep,"page":deps['page'],"pages":deps['pages'],"perPage":deps['perPage'],"total":deps['total']}
+    else:
+        return deps
 
 def get_users(token, orgID):
     """Функция вывода всех пользователей
@@ -147,10 +149,11 @@ def get_users(token, orgID):
 
     lst_usr =[]
 
-    usrs = usrs.show_users(token, orgID)
+    usrs = users.show_users(token, orgID)
     if check_request(usrs):
         while usrs['page'] <= usrs['pages']:
             lst_usr.append(users['users'])
             usrs = groups.show_users(token, orgID, page=usrs['page']+1)
-    else:
         return {"groups":lst_usr,"page":usrs['page'],"pages":usrs['pages'],"perPage":usrs['perPage'],"total":usrs['total']}
+    else:
+        return usrs
