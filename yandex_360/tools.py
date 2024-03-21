@@ -106,7 +106,7 @@ def get_groups(token, orgID):
     grps = groups.show_groups(token, orgID)
     if check_request(grps):
         while grps['page'] <= grps['pages']:
-            lst_grp.append(grps['groups'])
+            lst_grp += grps['groups']
             grps = groups.show_groups(token, orgID, page=grps['page']+1)
         return {"groups":lst_grp,"page":grps['page'],"pages":grps['pages'],"perPage":grps['perPage'],"total":grps['total']}
     else:
@@ -129,7 +129,7 @@ def get_departments(token, orgID):
     deps = departments.show_departments(token, orgID)
     if check_request(deps):
         while deps['page'] <= deps['pages']:
-            lst_dep.append(deps['departments'])
+            lst_dep += deps['departments']
             deps = departments.show_departmets(token, orgID, page=deps['page']+1)
         return {"departments":lst_dep,"page":deps['page'],"pages":deps['pages'],"perPage":deps['perPage'],"total":deps['total']}
     else:
@@ -152,8 +152,31 @@ def get_users(token, orgID):
     usrs = users.show_users(token, orgID)
     if check_request(usrs):
         while usrs['page'] <= usrs['pages']:
-            lst_usr.append(users['users'])
-            usrs = groups.show_users(token, orgID, page=usrs['page']+1)
+            lst_usr += users['users']
+            usrs = users.show_users(token, orgID, page=usrs['page']+1)
         return {"users":lst_usr,"page":usrs['page'],"pages":usrs['pages'],"perPage":usrs['perPage'],"total":usrs['total']}
     else:
         return usrs
+
+def get_domains(token, orgID):
+    """Функция вывода всех доменов
+    
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :return: словарь доменов
+    :rtype: dict
+    
+    """
+
+    lst_dom =[]
+
+    doms = domains.show_domains(token, orgID)
+    if check_request(doms):
+        while doms['page'] <= doms['pages']:
+            lst_dom += doms['domains']
+            usrs = domains.show_users(token, orgID, page=usrs['page']+1)
+        return {"domains":lst_dom,"page":doms['page'],"pages":doms['pages'],"perPage":doms['perPage'],"total":doms['total']}
+    else:
+        return doms
