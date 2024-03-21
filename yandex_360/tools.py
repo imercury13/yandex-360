@@ -1,6 +1,6 @@
 """Модуль вспомогательных функций"""
 
-from . import users, groups, departments, domains, dns
+from . import users, groups, departments, domains, dns, org, logs
 
 def check_request(req):
     """Функция проверки ответа запроса
@@ -203,3 +203,26 @@ def get_dns(token, orgID, domain):
         return {"records":lst_dnss,"page":dnss['page'],"pages":dnss['pages'],"perPage":dnss['perPage'],"total":dnss['total']}
     else:
         return dnss
+
+def get_orgs(token, orgID):
+    """Функция вывода всех организаций
+    
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :return: словарь организаций
+    :rtype: dict
+    
+    """
+
+    lst_orgs =[]
+
+    orgs = org.show_orgs(token, orgID)
+    if check_request(orgs):
+        while orgs['pageToke'] != '':
+            lst_orgs += orgs['organizations']
+            orgs = org.show_orgs(token, orgID, pageToken=orgs['nextPageToken'])
+        return {"organizations":lst_dnss,"nextPageToken":orgs['nextPageToken']}
+    else:
+        return orgs
