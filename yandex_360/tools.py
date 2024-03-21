@@ -254,10 +254,45 @@ def get_disk_log(token, orgID, beforeDate=None, afterDate=None, includeUids=None
     disk = logs.disk_log(token, orgID, beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids)
     if check_request(disk):
         lst_disk += disk['events']
-        disk = logs.disk_log(token, orgID, pageToken=orgs['nextPageToken'], beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids)
+        disk = logs.disk_log(token, orgID, pageToken=disk['nextPageToken'], beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids)
         while disk['nextPageToken'] != '':
             lst_disk += disk['events']
-            disk = logs.disk_log(token, orgID, pageToken=orgs['nextPageToken'], beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids)
-        return {"events":lst_disk,"nextPageToken":orgs['nextPageToken']}
+            disk = logs.disk_log(token, orgID, pageToken=disk['nextPageToken'], beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids)
+        return {"events":lst_disk,"nextPageToken":disk['nextPageToken']}
     else:
         return disk
+
+def get_mail_log(token, orgID, beforeDate=None, afterDate=None, includeUids=None, excludeUids=None, types=None):
+    """Функция возвращает список событий в аудит-логе Почте организации.
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param beforeDate: Верхняя граница периода выборки в формате ISO 8601
+    :type beforeDate: str
+    :param afterDate: Нижняя граница периода выборки в формате ISO 8601
+    :type afterDate: str
+    :param includeUids: Список пользователей, действия которых должны быть включены в список событий
+    :type includeUids: str
+    :param excludeUids: Список пользователей, действия которых должны быть исключены из списка событий
+    :type excludeUids: str
+    :param types: Типы событий которые должны быть включены в список. По умолчанию включаются все события
+    :type types: str
+    :return: :numref:`результат запроса %s <Результат запроса mail_log>`
+    :rtype: dict
+
+    """
+
+    lst_mail =[]
+
+    mail = logs.mail_log(token, orgID, beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids, types=None)
+    if check_request(mail):
+        lst_mail += mail['events']
+        mail = logs.mail_log(token, orgID, pageToken=mail['nextPageToken'], beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids, types=None)
+        while mail['nextPageToken'] != '':
+            lst_mail += mail['events']
+            mail = logs.mail_log(token, orgID, pageToken=mail['nextPageToken'], beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids, types=None)
+        return {"events":lst_mail,"nextPageToken":mail['nextPageToken']}
+    else:
+        return mail
