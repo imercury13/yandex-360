@@ -81,7 +81,7 @@
    :undoc-members:
    :show-inheritance:
 
-Модуль yandex\_360.2fa
+Модуль yandex\_360.a2fa
 ------------------------
 
 .. automodule:: yandex_360.a2fa
