@@ -4,12 +4,12 @@
 from jreq.jreq import safe_request
 import json
 
-def show_orgs(token, orgID, pageSize=10, pageToken=None):
+def show_orgs(token, orgID, pageSize=100, pageToken=None):
     """Функция возвращает список организаций пользователя
 
     :param token: :term:`Яндекс токен приложения`
     :type token: str
-    :param pageSize: Количество организаций на странице. Максимальное значение — 100. По умолчанию — 10
+    :param pageSize: Количество организаций на странице. Максимальное значение — 100. По умолчанию — 100
     :type pageSize: int
     :param pageToken: Токен постраничной навигации
     :type pageToken: str

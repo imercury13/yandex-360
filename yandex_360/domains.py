@@ -66,7 +66,7 @@ def add_domain (token, orgID, domain):
 
     return safe_request('post',url, headers, json.dumps(body))
 
-def show_domains(token, orgID, page=1, perPage=10):
+def show_domains(token, orgID, page=1, perPage=100):
     """Функция возвращает список доменов организации с постраничной навигацией
 
     :param token: :term:`Яндекс токен приложения`
@@ -75,7 +75,7 @@ def show_domains(token, orgID, page=1, perPage=10):
     :type orgID: str
     :param page: Номер страницы ответа. Значение по умолчанию — 1
     :type page: int
-    :param perPage: Количество доменов на одной странице ответа. Значение по умолчанию — 10
+    :param perPage: Количество доменов на одной странице ответа. Значение по умолчанию — 100
     :type perPage: int
     :return: :numref:`результат запроса %s <Результат запроса show_domain>`
     :rtype: dict

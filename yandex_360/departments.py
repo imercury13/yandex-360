@@ -279,7 +279,7 @@ def show_department(token, orgID, depID):
 
     return safe_request('get', url, headers)
 
-def show_departments(token, orgID, page=1, perPage=10, parentId=None, orderBy='id'):
+def show_departments(token, orgID, page=1, perPage=100, parentId=None, orderBy='id'):
     """Функция возвращает список подразделений с постраничной навигацией
 
     :param token: :term:`Яндекс токен приложения`
@@ -288,7 +288,7 @@ def show_departments(token, orgID, page=1, perPage=10, parentId=None, orderBy='i
     :type orgID: str
     :param page: Номер страницы ответа. Значение по умолчанию — 1
     :type page: int
-    :param perPage: Количество подраздлений на одной странице ответа. Значение по умолчанию — 10
+    :param perPage: Количество подраздлений на одной странице ответа. Значение по умолчанию — 100
     :type perPage: int
     :param parentId: Идентификатор родительского подразделения. Если не указан, то выводятся все подразделения организации
     :type parentId: str

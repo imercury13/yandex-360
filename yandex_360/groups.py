@@ -438,7 +438,7 @@ def show_members_group(token, orgID, groupID):
     
     return safe_request('get', url, headers)
 
-def show_groups(token, orgID, page=1,perPage=10):
+def show_groups(token, orgID, page=1,perPage=100):
     """Функция возвращает список групп с постраничной навигацией
 
     :param token: :term:`Яндекс токен приложения`
@@ -447,7 +447,7 @@ def show_groups(token, orgID, page=1,perPage=10):
     :type orgID: str
     :param page: Номер страницы ответа. Значение по умолчанию — 1
     :type page: int
-    :param perPage: Количество групп на одной странице ответа. Значение по умолчанию — 10
+    :param perPage: Количество групп на одной странице ответа. Значение по умолчанию — 100
     :type perPage: int
     :return: :numref:`результат запроса %s <Результат запроса show_groups>`
     :rtype: dict

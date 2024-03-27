@@ -11,7 +11,7 @@
 from jreq.jreq import safe_request
 import json
 
-def show_dns (token, orgID, domain, page=1, perPage=50):
+def show_dns (token, orgID, domain, page=1, perPage=100):
     """Функция позволяет получить все DNS-записи, которые были установлены для домена
 
     :param token: :term:`Яндекс токен приложения`
@@ -22,7 +22,7 @@ def show_dns (token, orgID, domain, page=1, perPage=50):
     :type domain: str
     :param page: Номер страницы ответа. Значение по умолчанию — 1
     :type page: int
-    :param perPage: Количество записей на одной странице ответа. Значение по умолчанию — 50
+    :param perPage: Количество записей на одной странице ответа. Значение по умолчанию — 100
     :type perPage: int
     :return: :numref:`результат запроса %s <Результат запроса show_dns>`
     :rtype: dict
