@@ -340,3 +340,132 @@ def edit_access_mailbox (token, orgID, userID, touserID, body):
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
     return safe_request('post',url, headers, json.dumps(body))
+
+
+def show_users_access_mailbox (token, orgID, userID):
+    """Функция возвращает список сотрудников, у которых есть права доступа к почтовому ящику
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param userID: :term:`ID пользователя в Яндекс 360` Идентификатор владельца почтового ящика, права доступа к которому необходимо проверить
+    :type userID: str
+    :return: :numref:`результат запроса %s <Результат запроса show_users_access_mailbox>`
+    :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_users_access_mailbox
+        :name: Результат запроса show_users_access_mailbox
+
+        {
+            "actors": [
+                {
+                    "actorId": str,
+                    "rights": [
+                        str
+                    ]
+                }
+            ]
+        }
+
+    """
+
+    url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/delegated/{userID}/actors'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('get',url, headers)
+
+
+def show_access_mailbox_user (token, orgID, userID):
+    """Функция возвращает список почтовых ящиков, к которым у сотрудника есть права доступа
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param userID: :term:`ID пользователя в Яндекс 360` Идентификатор сотрудника, для которого запрашивается список доступных ящиков
+    :type userID: str
+    :return: :numref:`результат запроса %s <Результат запроса show_access_mailbox_user>`
+    :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_access_mailbox_user
+        :name: Результат запроса show_access_mailbox_user
+
+        {
+            "resources": [
+                {
+                    "resourceId": str,
+                    "rights": [
+                        str
+                    ]
+                }
+            ]
+        }
+
+    """
+
+    url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/delegated/{userID}/resources'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('get',url, headers)
+
+
+def show_status_access_mailbox (token, orgID, taskID):
+    """Функция возвращает статус задачи на управление правами доступа
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param taskID: Идентификатор задачи на управление правами доступа. Возвращается в ответе на запрос на изменение или на удаление прав доступа к почтовому ящику
+    :type taskID: str
+    :return: :numref:`результат запроса %s <Результат запроса show_access_mailbox_user>`
+    :rtype: dict
+
+    .. code-block:: python
+        :caption: Результат запроса show_status_access_mailbox
+        :name: Результат запроса show_status_access_mailbox
+
+        {
+            "status": str
+        }
+
+    """
+
+    url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/delegated/tasks/{taskID}'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('get',url, headers)
+
+
+def delete_access_mailbox (token, orgID, userID, touserID):
+    """Функция удаляет все права доступа сотрудника к почтовому ящику
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param userID: :term:`ID пользователя в Яндекс 360` Идентификатор владельца почтового ящика, права доступа к которому необходимо предоставить или изменить
+    :type userID: str
+    :param touserID: :term:`ID пользователя в Яндекс 360` Идентификатор сотрудника, для которого настраивается доступ
+    :type touserID: str
+    :return: :numref:`результат запроса %s <Результат запроса delete_access_mailbox>`
+    :rtype: dict
+
+
+    .. code-block:: python
+        :caption: Результат запроса delete_access_mailbox
+        :name: Результат запроса delete_access_mailbox
+
+        {
+            "taskId": str 
+        }
+
+    """
+
+    url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/delegated?resourceId={userID}&actorId={touserID}'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('delete',url, headers)
