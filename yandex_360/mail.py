@@ -6,13 +6,16 @@
     **Разрешения на использование сервиса, которые доступны при настройке приложения:**
 
     **ya360_admin:mail_read_user_settings** — чтение настроек почты пользователя;
-    **ya360_admin:mail_write_user_settings** — управление настройками почты пользователя.
+    **ya360_admin:mail_write_user_settings** — управление настройками почты пользователя;
+    **ya360_admin:mail_write_shared_mailbox_inventory** — управление правами доступа к почтовым ящикам;
+    **ya360_admin:mail_read_shared_mailbox_inventory** — чтение информации о правах доступа к почтовым ящикам.
 
 
 """
 
-from jreq.jreq import safe_request
 import json
+from jreq.jreq import safe_request
+
 
 def show_sender_info (token, orgID, userID):
     """Функция позволяет просмотреть почтовый адрес, с которого отправляются письма по умолчанию, и настройки подписей сотрудника
@@ -292,6 +295,48 @@ def edit_address_book (token, orgID, userID, body):
     """
 
     url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/users/{userID}/settings/address_book'
+    headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
+
+    return safe_request('post',url, headers, json.dumps(body))
+
+
+def edit_access_mailbox (token, orgID, userID, touserID, body):
+    """Функция предоставляет или изменяет права доступа сотрудника к чужому почтовому ящику.
+
+    :param token: :term:`Яндекс токен приложения`
+    :type token: str
+    :param orgID: :term:`ID организации в Яндекс 360`
+    :type orgID: str
+    :param userID: :term:`ID пользователя в Яндекс 360` Идентификатор владельца почтового ящика, права доступа к которому необходимо предоставить или изменить
+    :type userID: str
+    :param touserID: :term:`ID пользователя в Яндекс 360` Идентификатор сотрудника, для которого настраивается доступ
+    :type touserID: str
+    :param body: :numref:`Тело запроса %s <Тело запроса edit_access_mailbox>`
+    :type body: dict
+    :return: :numref:`результат запроса %s <Результат запроса edit_access_mailbox>`
+    :rtype: dict
+
+    .. code-block:: python
+        :caption: Тело запроса edit_access_mailbox
+        :name: Тело запроса edit_access_mailbox
+
+        {
+            "rights": [
+                "str"
+            ]
+        }
+
+    .. code-block:: python
+        :caption: Результат запроса edit_access_mailbox
+        :name: Результат запроса edit_access_mailbox
+
+        {
+            "taskId": str 
+        }
+
+    """
+
+    url = f'https://api360.yandex.net/admin/v1/org/{orgID}/mail/delegated?resourceId={userID}&actorId={touserID}'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 
     return safe_request('post',url, headers, json.dumps(body))
