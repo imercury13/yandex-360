@@ -395,7 +395,7 @@ def get_dns(token, orgID, domain):
     if check_request(dnss):
         while dnss['page'] <= dnss['pages']:
             lst_dnss += dnss['records']
-            dnss = dns.show_dns(token, orgID, domain, page=usrs['page']+1)
+            dnss = dns.show_dns(token, orgID, domain, page=dnss['page']+1)
         return {"records":lst_dnss,"page":dnss['page'],"pages":dnss['pages'],"perPage":dnss['perPage'],"total":dnss['total']}
     else:
         return dnss
@@ -563,13 +563,13 @@ def get_mail_log(token, orgID, beforeDate=None, afterDate=None, includeUids=None
 
     lst_mail =[]
 
-    mail = logs.mail_log(token, orgID, beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids, types=None)
+    mail = logs.mail_log(token, orgID, beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids, types=types)
     if check_request(mail):
         lst_mail += mail['events']
-        mail = logs.mail_log(token, orgID, pageToken=mail['nextPageToken'], beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids, types=None)
+        mail = logs.mail_log(token, orgID, pageToken=mail['nextPageToken'], beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids, types=types)
         while mail['nextPageToken'] != '':
             lst_mail += mail['events']
-            mail = logs.mail_log(token, orgID, pageToken=mail['nextPageToken'], beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids, types=None)
+            mail = logs.mail_log(token, orgID, pageToken=mail['nextPageToken'], beforeDate=beforeDate, afterDate=afterDate, includeUids=includeUids, excludeUids=excludeUids, types=types)
         return {"events":lst_mail,"nextPageToken":mail['nextPageToken']}
     else:
         return mail

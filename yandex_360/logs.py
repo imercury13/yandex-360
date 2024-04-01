@@ -1,8 +1,8 @@
 """Модуль для управления аудит-логов.
 """
 
+from urllib.parse import urlencode
 from jreq.jreq import safe_request
-import json
 
 def disk_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterDate=None, includeUids=None, excludeUids=None):
     """Функция возвращает список событий в аудит-логе Диска организации.
@@ -20,9 +20,9 @@ def disk_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterD
     :param afterDate: Нижняя граница периода выборки в формате ISO 8601
     :type afterDate: str
     :param includeUids: Список пользователей, действия которых должны быть включены в список событий
-    :type includeUids: str
+    :type includeUids: list
     :param excludeUids: Список пользователей, действия которых должны быть исключены из списка событий
-    :type excludeUids: str
+    :type excludeUids: list
     :return: :numref:`результат запроса %s <Результат запроса disk_log>`
     :rtype: dict
 
@@ -58,11 +58,20 @@ def disk_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterD
     """
 
     url = f'https://api360.yandex.net/security/v1/org/{orgID}/audit_log/disk?pageSize={pageSize}'
-    if pageToken: url += f'&pageToken={pageToken}'
-    if beforeDate: url += f'&beforeDate={beforeDate}'
-    if afterDate: url += f'&afterDate={afterDate}'
-    if includeUids: url += f'&includeUids={includeUids}'
-    if excludeUids: url += f'&excludeUids={excludeUids}'
+    if pageToken:
+        url += f'&pageToken={pageToken}'
+    if beforeDate:
+        url += f'&beforeDate={beforeDate}'
+    if afterDate:
+        url += f'&afterDate={afterDate}'
+    if includeUids:
+        tmp = {"includeUids":includeUids}
+        tmp = urlencode(tmp, doseq=True)
+        url += f'&{tmp}'
+    if excludeUids:
+        tmp = {"excludeUids":excludeUids}
+        tmp = urlencode(tmp, doseq=True)
+        url += f'&{tmp}'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 	
     return safe_request('get', url, headers)
@@ -83,11 +92,11 @@ def mail_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterD
     :param afterDate: Нижняя граница периода выборки в формате ISO 8601
     :type afterDate: str
     :param includeUids: Список пользователей, действия которых должны быть включены в список событий
-    :type includeUids: str
+    :type includeUids: list
     :param excludeUids: Список пользователей, действия которых должны быть исключены из списка событий
-    :type excludeUids: str
+    :type excludeUids: list
     :param types: Типы событий которые должны быть включены в список. По умолчанию включаются все события
-    :type types: str
+    :type types: list
     :return: :numref:`результат запроса %s <Результат запроса mail_log>`
     :rtype: dict
 
@@ -129,12 +138,24 @@ def mail_log(token, orgID, pageSize=100, pageToken=None, beforeDate=None, afterD
     """
 
     url = f'https://api360.yandex.net/security/v1/org/{orgID}/audit_log/mail?pageSize={pageSize}'
-    if pageToken: url += f'&pageToken={pageToken}'
-    if beforeDate: url += f'&beforeDate={beforeDate}'
-    if afterDate: url += f'&afterDate={afterDate}'
-    if includeUids: url += f'&includeUids={includeUids}'
-    if excludeUids: url += f'&excludeUids={excludeUids}'
-    if types: url += f'&types={types}'
+    if pageToken:
+        url += f'&pageToken={pageToken}'
+    if beforeDate:
+        url += f'&beforeDate={beforeDate}'
+    if afterDate:
+        url += f'&afterDate={afterDate}'
+    if includeUids:
+        tmp = {"includeUids":includeUids}
+        tmp = urlencode(tmp, doseq=True)
+        url += f'&{tmp}'
+    if excludeUids:
+        tmp = {"excludeUids":excludeUids}
+        tmp = urlencode(tmp, doseq=True)
+        url += f'&{tmp}'
+    if types:
+        tmp = {"types":types}
+        tmp = urlencode(tmp, doseq=True)
+        url += f'&{tmp}'
     headers={'Authorization': f'OAuth {token}', 'Content-type': 'application/json'}
 	
     return safe_request('get', url, headers)
